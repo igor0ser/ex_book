@@ -1,0 +1,19 @@
+{
+  "name": "ext_book",
+  "version": "1.0.0",
+  "description": "JS Menthoring Homework",
+  "author": "Igor Sergiienko",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igor0ser/"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-webserver": "^0.9.1",
+    "gulp-watch": "^4.3.5"
+  }
+}

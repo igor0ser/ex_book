@@ -1,0 +1,16 @@
+body {
+	background: url('../img/background.png');
+	color: #fff;
+}
+
+.container {
+	border: 2px dashed #fff;
+	width: 750px;
+}
+
+.avatar {
+	height: 125px;
+	width: 125px;
+	border-radius: 50%;
+	
+}
