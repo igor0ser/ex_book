@@ -1,0 +1,19 @@
+<div class="post clearfix">
+	<img ng-src={{vm.post.postAvatar}} class="post-avatar">
+	<div class="post-text">
+		<h3 class="post-author">{{vm.post.postAuthor}}</h3>
+		<p class="post-text-p">{{vm.post.postText}}</p>
+	</div>
+	<div class="post-comments">
+		<comment
+			ng-repeat="comment in vm.post.comments"
+			author={{comment.commentAuthor}}
+			text={{comment.commentText}}
+		>
+		</comment>
+		<form>
+			<textarea class="comment-textarea" name=""  rows="2"></textarea>
+			<button class="btn btn-warning comment-add">Add comment</button>
+		</form>
+
+</div>

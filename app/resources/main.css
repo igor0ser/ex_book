@@ -1,16 +1,104 @@
 body {
-	background: url('../img/background.png');
 	color: #fff;
+	background: url('../img/background.png');
+}
+
+.header{
+	height: 50px;
+	background: #000;
+}
+
+.header .btn{
+	margin-top: 7px;
+	float: right;
+	margin-right: 15px;
+}
+
+.header img{
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	margin: 5px;
+	float: left;
+}
+
+.header p{
+	color: gold;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 50px;
+	float: left;
+	margin-left: 5px;
 }
 
 .container {
-	border: 2px dashed #fff;
-	width: 750px;
+	width: 800px;
+	border-left: 1px dashed #fff;
+	border-right: 1px dashed #fff;
+	padding: 0;
+
 }
 
-.avatar {
+.make-post{
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.post{
+	width: 700px;
+	margin: 20px auto;
+	background: #333;
+	border-radius: 6px;
+}
+
+.post-author{
+	color: gold;
+	margin-top: 25px;
+}
+
+.post-avatar {
 	height: 125px;
 	width: 125px;
 	border-radius: 50%;
-	
+	margin: 25px 0 15px 50px;
+}
+
+.post-text {
+	width: 450px;
+	float: right;
+	margin-right: 50px;
+}
+
+.post-comments {
+	width: 600px;
+	margin: 10px auto;
+}
+
+.comment {
+	padding: 10px;
+	margin-bottom: 10px;
+	background: #444;
+}
+
+.comment-author {
+	color: gold;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.comment-text {
+	font-style: italic;
+}
+
+.comment-textarea {
+	width: 600px;
+	color: #333;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+
+.comment-add {
+	display: block;
+	margin: 0 auto 15px;
 }
