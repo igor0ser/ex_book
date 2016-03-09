@@ -5,7 +5,7 @@
 
 	app.directive('post', function(){
 		return {
-			templateUrl: '/resources/post/view.html',
+			templateUrl: '/modules/post/view.html',
 			controller: 'PostController',
 			controllerAs: 'vm',
 			scope: {

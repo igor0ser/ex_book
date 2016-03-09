@@ -5,7 +5,7 @@
 
 	app.directive('comment', function(){
 		return {
-			templateUrl: '/resources/comment/view.html',
+			templateUrl: '/modules/comment/view.html',
 			scope: {
 				author: '@',
 				text: '@'

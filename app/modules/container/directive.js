@@ -5,7 +5,7 @@
 
 	app.directive('container', function(){
 		return {
-			templateUrl: '/resources/container/view.html',
+			templateUrl: '/modules/container/view.html',
 			controller: 'ContainerController',
 			controllerAs: 'vm',
 			scope: {},

@@ -5,7 +5,7 @@
 
 	app.directive('header1', function(){
 		return {
-			templateUrl: '/resources/header/view.html',
+			templateUrl: '/modules/header/view.html',
 			controller: 'HeaderController',
 			controllerAs: 'vm',
 			scope: {},

@@ -13,6 +13,10 @@
 		vm.signOut = function(){
 			user = null;
 			vm.isLogined = !!user;
+		};
+
+		vm.modal = function(){
+			document.querySelector('.faden').classList.remove('d-n');
 		}
 
 	});

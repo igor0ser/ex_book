@@ -11,7 +11,7 @@ var paths = {
 	localhost: 'http://localhost:8000/index.html',
 	angular: 'app/vendors/angular/angular.min.js',
 	route: 'app/vendors/angular-ui-router/release/angular-ui-router.min.js',
-	app: 'app/resources/**/*.js',
+	app: 'app/modules/**/*.js',
 	dist: 'app/dist'
 };
 
@@ -29,7 +29,7 @@ gulp.task('concat', function() {
 
 
 
-gulp.task('webserver', function() {
+gulp.task('webserver', ['concat'], function() {
 	return gulp.src('app')
 		.pipe(webserver({
 			livereload: true,
@@ -48,7 +48,7 @@ gulp.task('watch', function() {
 
 
 // The default task is 'watch'
-gulp.task('default', ['concat', 'webserver', 'watch']);
+gulp.task('default', ['webserver', 'watch']);
 
 
 
