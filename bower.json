@@ -8,7 +8,6 @@
   "license": "O",
   "dependencies": {
     "bootstrap-css-only": "latest",
-    "angular": "~1.4.0",
-    "angular-ui-router": "~0.2.15"
+    "angular": "~1.4.0"
   }
 }

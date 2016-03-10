@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('app', ['ui.router']);
+	var app = angular.module('app', []);
 
 	app.value('model', {
 		posts: [],
