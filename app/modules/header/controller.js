@@ -5,11 +5,13 @@
 
 	app.controller('HeaderController', function($scope, model){
 		var vm = this;
-		vm.isLogined = model.isLogined;
-		vm.userName = model.userName;
-		vm.avatar = model.avatar;
+		vm.model = model;
+
+		console.log(132);
 
 		vm.signOut = function(){
+			console.log('ddd');
+			console.log(model.isLogined);
 			model.isLogined = false;
 		};
 
