@@ -48,7 +48,7 @@ gulp.task('watch', function() {
 
 
 // The default task is 'watch'
-gulp.task('default', ['webserver', 'watch']);
+gulp.task('default', ['concat', 'watch']);
 
 
 

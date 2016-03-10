@@ -2,10 +2,10 @@
 
 	<header1></header1>
 
-	<button class="btn btn-warning btn-lg make-post" ng-if="vm.isLogined">
-		Make a post
-	</button>
-	<span>{{user}}</span>
+	<form ng-if="vm.isLogined" class="make-post">
+		<textarea class="make-post-textarea" name="" rows="3"></textarea>
+		<button class="btn btn-warning btn-lg make-post-btn">Make a post</button>
+	</form>
 
 	<post
 		ng-repeat="post in vm.posts"

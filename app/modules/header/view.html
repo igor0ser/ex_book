@@ -1,14 +1,14 @@
 <div class="header">
+
+	<div ng-if="vm.isLogined">
+		<img ng-src={{vm.avatar}}>
+		<p>{{vm.userName}}</p>
+		<button class="btn btn-danger" ng-click="vm.signOut()">Sign out</button>
+	</div>
+
 	<div ng-if="!vm.isLogined">
 		<button class="btn btn-danger" ng-click="vm.modal()">Sign in</button>
 		<button class="btn btn-danger">Sign up</button>
 	</div>
-
-	<div ng-if="vm.isLogined">
-		<img ng-src={{vm.user.avatar}}>
-		<p>{{vm.user.login}}</p>
-		<button class="btn btn-danger" ng-click="vm.signOut()">Sign out</button>
-	</div>
-
 
 </div>

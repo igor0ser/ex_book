@@ -3,21 +3,19 @@
 
 	var app = angular.module('app');
 
-	app.controller('HeaderController', function($scope, user){
+	app.controller('HeaderController', function($scope, model){
 		var vm = this;
-		console.log(user);
-		vm.user = user;
-		vm.isLogined = !!user;
-
+		vm.isLogined = model.isLogined;
+		vm.userName = model.userName;
+		vm.avatar = model.avatar;
 
 		vm.signOut = function(){
-			user = null;
-			vm.isLogined = !!user;
+			model.isLogined = false;
 		};
 
 		vm.modal = function(){
 			document.querySelector('.faden').classList.remove('d-n');
-		}
+		};
 
 	});
 

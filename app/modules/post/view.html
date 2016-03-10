@@ -11,9 +11,10 @@
 			text={{comment.commentText}}
 		>
 		</comment>
-		<form>
+
+		<form ng-if="vm.isLogined">
 			<textarea class="comment-textarea" name=""  rows="2"></textarea>
 			<button class="btn btn-warning comment-add">Add comment</button>
 		</form>
-
+	</div>
 </div>

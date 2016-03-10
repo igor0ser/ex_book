@@ -3,12 +3,11 @@
 
 	var app = angular.module('app');
 
-	app.controller('ContainerController', function($scope, model, user){
+	app.controller('ContainerController', function(model){
 		var vm = this;
 
-		vm.posts = model;
-		vm.isLogined = !!user;
-		$scope.user = user;
+		vm.posts = model.posts;
+		vm.isLogined = model.isLogined;
 
 
 	});
