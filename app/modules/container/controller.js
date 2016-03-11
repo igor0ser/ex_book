@@ -9,7 +9,7 @@
 		vm.model = model;
 		vm.text = '';
 
-		vm.submit = function(e) {
+		vm.submit = function() {
 			var data = {
 				id: new Date().getTime(),
 				postAuthor: model.userName,

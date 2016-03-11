@@ -21,11 +21,6 @@ server = app.listen(8080, () => {
 	console.log('Server is listening on port 8080.');
 });
 
-app.post('/post', (req, res) => {
-	console.log(req.body);
-	posts.unshift(req.body);
-	res.end();
-});
 
 app.post('/login', (req, res) => {
 	console.log(req.body);
@@ -48,4 +43,25 @@ app.post('/login', (req, res) => {
 		res.end();
 	}
 
+});
+
+
+app.post('/post', (req, res) => {
+	posts.unshift(req.body);
+	res.end();
+});
+
+app.post('/comment', (req, res) => {
+	console.log(req.body);
+	var comment = {
+		commentAuthor: req.body.commentAuthor,
+		commentText: req.body.commentText
+	};
+	for (var i = 0; i < posts.length; i++){
+		if (posts[i].id == req.body.id) {
+			posts[i].comments.unshift(comment);
+		}
+	}
+
+	res.end();
 });
