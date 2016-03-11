@@ -3,36 +3,12 @@
 
 	app.value('model', {
 		posts: [],
-		isLogined: false,
-		userName: '',
-		avatar: ''
+		isLogined: true,
+		userName: 'user',
+		avatar: 'img/avatar0.jpg'
 	});
 
-	app.service('getPosts', function($http, model){
-		console.log(2);
-		this.get = () => {
-			$http
-				.get('/model')
-				.success((data) => {
-					model.posts = data;
-				})
-				.error(() => {
-					console.log('error');
-				});
-		};
-		return this;
-	});
-
-	app.run(($http, model, getPosts) => {
-		console.log(getPosts);
+	app.run((getPosts) => {
 		getPosts.get();
-/*		$http
-			.get('/model')
-			.success((data) => {
-				model.posts = data;
-			})
-			.error(() => {
-				console.log('error');
-			});
-*/	});
+	});
 })();

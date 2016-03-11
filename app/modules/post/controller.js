@@ -6,7 +6,7 @@
 	app.controller('PostController', function($scope, model){
 		var vm = this;
 
-		var post = model.posts.filter(item => item.id === $scope.id)[0];
+		var post = model.posts.filter(item => item.id == $scope.id)[0];
 		vm.post = post;
 		vm.model = model;
 	});

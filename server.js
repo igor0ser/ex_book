@@ -23,7 +23,8 @@ server = app.listen(8080, () => {
 
 app.post('/post', (req, res) => {
 	console.log(req.body);
-	res.redirect('/');
+	posts.unshift(req.body);
+	res.end();
 });
 
 app.post('/login', (req, res) => {
@@ -40,11 +41,9 @@ app.post('/login', (req, res) => {
 	}
 
 	if (isLogined) {
-		console.log('was logined');
 		res.send(imgUrl);
 		res.end();
 	} else {
-		console.log('was not logined');
 		res.send('Wrong login or password');
 		res.end();
 	}

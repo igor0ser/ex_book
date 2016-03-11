@@ -3,6 +3,20 @@
 
 	var app = angular.module('app');
 
+	app.service('getPosts', function($http, model){
+		this.get = () => {
+			$http
+				.get('/model')
+				.success((data) => {
+					model.posts = data;
+				})
+				.error(() => {
+					console.log('error');
+				});
+		};
+		return this;
+	});
+	
 	app.service('modalService', function ($document) {
 		var faden = document.querySelector('.faden');
 
@@ -26,6 +40,6 @@
 				if (cb) cb();
 			}, 500);
 		};
-
 	});
+
 })();
