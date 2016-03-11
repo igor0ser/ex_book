@@ -68,18 +68,19 @@ border-right: 1px dashed #fff; */
 	margin: 20px auto;
 	background: #333;
 	border-radius: 6px;
+	padding: 10px 0;
 }
 
 .post-author{
 	color: gold;
-	margin-top: 25px;
+	margin-top: 10px;
 }
 
 .post-avatar {
 	height: 125px;
 	width: 125px;
 	border-radius: 50%;
-	margin: 25px 0 15px 50px;
+	margin: 10px 0 15px 50px;
 }
 
 .post-text {
@@ -121,7 +122,7 @@ border-right: 1px dashed #fff; */
 
 .comment-add {
 	display: block;
-	margin: 0 auto 15px;
+	margin: 0 auto;
 }
 
 .faden{
@@ -131,22 +132,46 @@ border-right: 1px dashed #fff; */
 	position: fixed;
 	top: 0;
 	left: 0;
+	transition: opacity 0.5s;
 }
+
 .modals {
 	width: 500px;
-	height: 250px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	background: #333;
 	margin-left: -250px;
-	margin-top: -125px;
+	margin-top: -200px;
 	border-radius: 6px;
 	padding: 20px;
 }
 
+.btn-close{
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+.pass-eq{
+	color: red;
+	position: absolute;
+	bottom: 12%;
+}
+
+.message-text {
+	text-align: center;
+	font-size: 20px;
+}
+
 .modals .btn {
 	float: right;
+}
+
+.modals .btn-ok{
+	float: none;
+	display: block;
+	margin: auto;
+	margin-top: 20px;
 }
 
 .modals .clearfix{
@@ -155,4 +180,8 @@ border-right: 1px dashed #fff; */
 
 .d-n{
 	display: none;
+}
+
+.o0 {
+	opacity: 0;
 }

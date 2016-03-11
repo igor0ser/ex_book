@@ -1,26 +1,69 @@
-	<div class="faden d-n">
-		<div class="modals">
+<div class="faden d-n o0">
+
+	<div class="modals d-n login">
 		<div class="clearfix">
-			<button class="btn btn-warning" ng-click="vm.close(e)">x</button>
+			<button class="btn btn-warning btn-close" ng-click="vm.close('.login')">x</button>
 		</div>
-			<form class="form-horizontal">
-				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-10">
-						<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-					</div>
+		<form class="form-horizontal" ng-submit="vm.submit('/login')">
+			<div class="form-group">
+				<label for="input-login" class="col-sm-2 control-label">Login</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="input-login" placeholder="Login" required ng-model="vm.login">
 				</div>
-				<div class="form-group">
-					<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-					<div class="col-sm-10">
-						<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-					</div>
+			</div>
+			<div class="form-group">
+				<label for="input-password" class="col-sm-2 control-label">Password</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="input-password" placeholder="Password" required ng-model='vm.password'>
 				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-warning">Sign in</button>
-					</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-warning">Log in</button>
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
+
+	<div class="modals d-n signup">
+		<div class="clearfix">
+			<button class="btn btn-warning btn-close" ng-click="vm.close('.signup')">x</button>
+		</div>
+		<form class="form-horizontal" ng-submit="vm.submit('/signup')">
+			<div class="form-group">
+				<label for="input-login" class="col-sm-2 control-label">Login</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="input-login" placeholder="Login" required ng-model="vm.login">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="input-password" class="col-sm-2 control-label">Password</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="input-password" placeholder="Password" required ng-model='vm.password'>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="input-password2" class="col-sm-2 control-label">Repeat password</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="input-password2" placeholder="Repeat password" required ng-model='vm.passwordRepeat'>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-warning" ng-disabled="vm.password !== vm.passwordRepeat">Sign up</button>
+				</div>
+			</div>
+
+			<span class="pass-eq" ng-if="vm.password !== vm.passwordRepeat">Passwords are not equal to each other</span>
+		</form>
+	</div>
+
+	<div class="modals d-n message">
+		<div class="clearfix">
+			<button class="btn btn-warning btn-close" ng-click="vm.close('.message')">x</button>
+		</div>
+		<p class="message-text"></p>
+		<button class="btn btn-warning btn-ok" ng-click="vm.close('.message')">OK</button>
+	</div>
+</div>

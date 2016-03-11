@@ -7,8 +7,8 @@
 	</div>
 
 	<div ng-if="!vm.model.isLogined">
-		<button class="btn btn-danger" ng-click="vm.modal()">Sign in</button>
-		<button class="btn btn-danger">Sign up</button>
+		<button class="btn btn-danger" ng-click="vm.showModal('.login')">Log in</button>
+		<button class="btn btn-danger" ng-click="vm.showModal('.signup')">Sign up</button>
 	</div>
 
 </div>

@@ -3,22 +3,36 @@
 
 	app.value('model', {
 		posts: [],
-		isLogined: true,
-		userName: 'user',
-		avatar: 'img/avatar3.jpg'
+		isLogined: false,
+		userName: '',
+		avatar: ''
 	});
 
-	app.run(($http, model) => {
-		$http
-			.get('/posts')
+	app.service('getPosts', function($http, model){
+		console.log(2);
+		this.get = () => {
+			$http
+				.get('/model')
+				.success((data) => {
+					model.posts = data;
+				})
+				.error(() => {
+					console.log('error');
+				});
+		};
+		return this;
+	});
+
+	app.run(($http, model, getPosts) => {
+		console.log(getPosts);
+		getPosts.get();
+/*		$http
+			.get('/model')
 			.success((data) => {
-				for (var i = 0; i < data.length; i++) {
-					model.posts.push(data[i]);
-				}
+				model.posts = data;
 			})
 			.error(() => {
 				console.log('error');
 			});
-	});
-
+*/	});
 })();

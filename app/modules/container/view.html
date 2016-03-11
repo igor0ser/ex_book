@@ -2,13 +2,13 @@
 
 	<header1></header1>
 
-	<form ng-if="vm.isLogined" class="make-post">
-		<textarea class="make-post-textarea" name="" rows="3"></textarea>
+	<form ng-if="vm.model.isLogined" class="make-post" method="POST" action="/post">
+		<textarea class="make-post-textarea" name="text" rows="3" required></textarea>
 		<button class="btn btn-warning btn-lg make-post-btn">Make a post</button>
 	</form>
 
 	<post
-		ng-repeat="post in vm.posts"
+		ng-repeat="post in vm.model.posts"
 		id={{post.id}}
 	>
 	</post>

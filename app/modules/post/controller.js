@@ -8,7 +8,7 @@
 
 		var post = model.posts.filter(item => item.id === $scope.id)[0];
 		vm.post = post;
-		vm.isLogined = model.isLogined;
+		vm.model = model;
 	});
 
 })();
