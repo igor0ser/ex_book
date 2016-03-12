@@ -11,7 +11,9 @@ var open = require('gulp-open');
 var paths = {
 	localhost: 'http://localhost:8000/index.html',
 	angular: 'app/vendors/angular/angular.min.js',
-	app: 'app/modules/**/*.js',
+	app: 'app/modules/app.js',
+	services: 'app/modules/services.js',
+	modules: 'app/modules/**/*.js',
 	dist: 'app/dist',
 	port: 'http://localhost:8080/',
 };
@@ -21,7 +23,7 @@ var paths = {
 
 // concat 
 gulp.task('concat', function() {
-	return gulp.src([ paths.angular, paths.app ])
+	gulp.src([ paths.angular, paths.app, paths.services, paths.modules ])
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(paths.dist));
 });
@@ -37,7 +39,7 @@ gulp.task('nodemon', function() {
 
 // watch files, transpile if one of them changes
 gulp.task('watch', function() {
-	gulp.watch(paths.app, ['concat']);
+	gulp.watch([paths.app, paths.services, paths.modules], ['concat']);
 });
 
 //open

@@ -3,10 +3,10 @@
 
 	var app = angular.module('app');
 
-	app.directive('header', function(){
+	app.directive('addPost', function(){
 		return {
-			templateUrl: '/modules/header/view.html',
-			controller: 'HeaderController',
+			templateUrl: '/modules/add-post/view.html',
+			controller: 'AddPostController',
 			controllerAs: 'vm',
 			scope: {},
 			replace: true

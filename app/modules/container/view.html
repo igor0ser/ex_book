@@ -1,11 +1,8 @@
 <div class="container">
 
-	<header1></header1>
+	<header></header>
 
-	<form ng-if="vm.model.isLogined" class="make-post" ng-submit="vm.submit()">
-		<textarea class="make-post-textarea" rows="3" required ng-model="vm.text"></textarea>
-		<button class="btn btn-warning btn-lg make-post-btn">Make a post</button>
-	</form>
+	<add-post ng-if="vm.model.isLogined"></add-post>
 
 	<post
 		ng-repeat="post in vm.model.posts"

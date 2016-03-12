@@ -3,8 +3,8 @@
 
 	var app = angular.module('app');
 
-	app.service('getPosts', function($http, model){
-		this.get = () => {
+	app.service('serverConnection', function($http, model){
+		this.getData = () => {
 			$http
 				.get('/model')
 				.success((data) => {
@@ -14,9 +14,18 @@
 					console.log('error');
 				});
 		};
-		return this;
+
+		this.sendData = (url, data, cb) => {
+			$http.post(url, data).then(() => {
+				this.getData();
+				if (cb) cb();
+			});
+		};
+
+
 	});
-	
+
+
 	app.service('modalService', function ($document) {
 		var faden = document.querySelector('.faden');
 

@@ -12,9 +12,6 @@
 		>
 		</comment>
 
-		<form ng-if="vm.model.isLogined" ng-submit="vm.submit()">
-			<textarea class="comment-textarea" rows="2" required ng-model="vm.text"></textarea>
-			<button class="btn btn-warning comment-add">Add comment</button>
-		</form>
+		<add-comment id={{id}} ng-if="vm.model.isLogined"></add-comment>
 	</div>
 </div>

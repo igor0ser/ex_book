@@ -8,7 +8,7 @@
 		avatar: 'img/avatar0.jpg'
 	});
 
-	app.run((getPosts) => {
-		getPosts.get();
+	app.run((serverConnection) => {
+		serverConnection.getData();
 	});
 })();
