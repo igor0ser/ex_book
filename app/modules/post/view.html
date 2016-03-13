@@ -1,17 +1,17 @@
 <div class="post clearfix">
-	<img ng-src={{vm.post.postAvatar}} class="post-avatar">
+	<img ng-src={{postObj.postAvatar}} class="post-avatar">
 	<div class="post-text">
-		<h3 class="post-author">{{vm.post.postAuthor}}</h3>
-		<p class="post-text-p">{{vm.post.postText}}</p>
+		<h3 class="post-author">{{postObj.postAuthor}}</h3>
+		<p class="post-text-p">{{postObj.postText}}</p>
 	</div>
 	<div class="post-comments">
 		<comment
-			ng-repeat="comment in vm.post.comments"
+			ng-repeat="comment in postObj.comments"
 			author={{comment.commentAuthor}}
 			text={{comment.commentText}}
 		>
 		</comment>
 
-		<add-comment id={{id}} ng-if="vm.model.isLogined"></add-comment>
+		<add-comment post-id={{postObj.id}} ng-if="isLogined"></add-comment>
 	</div>
 </div>

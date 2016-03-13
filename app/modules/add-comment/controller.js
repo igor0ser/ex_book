@@ -7,11 +7,11 @@
 		var vm = this;
 
 		vm.text = '';
-		console.log($scope.id);
+		console.log($scope.postId);
 
 		vm.submit = function() {
 			var data = {
-				id: $scope.idpost,
+				id: $scope.postId,
 				commentAuthor: model.userName,
 				commentText: vm.text
 			};

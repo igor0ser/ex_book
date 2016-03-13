@@ -9,7 +9,7 @@
 			controller: 'AddCommentController',
 			controllerAs: 'vm',
 			scope: {
-				id: '@'
+				postId: '@'
 			},
 			replace: true
 		};

@@ -6,10 +6,9 @@
 	app.directive('post', function(){
 		return {
 			templateUrl: '/modules/post/view.html',
-			controller: 'PostController',
-			controllerAs: 'vm',
 			scope: {
-				id: '@'
+				postObj: '=',
+				isLogined: '='
 			},
 			replace: true
 		};

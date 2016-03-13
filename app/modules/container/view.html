@@ -6,7 +6,8 @@
 
 	<post
 		ng-repeat="post in vm.model.posts"
-		id={{post.id}}
+		post-obj="post"
+		is-logined="vm.model.isLogined"
 	>
 	</post>
 
