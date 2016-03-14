@@ -3,9 +3,9 @@
 
 	var app = angular.module('app');
 
-	app.directive('modalLogin', function(){
+	app.directive('modalSignup', function(){
 		return {
-			templateUrl: 'modules/modal/modal-login/view.html',
+			templateUrl: 'modules/modal/modal-signup/view.html',
 			replace: true,
 			controller: 'ModalLoginController',
 			controllerAs: 'vm'

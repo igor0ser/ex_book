@@ -19,16 +19,24 @@
 		$stateProvider
 			.state('home', {
 				url: '/',
-				template: '<h1>hrllpo</h1>'
+				template: ''
 			})
-			.state('modals', {
-				template: '<modal></modal',
+			.state('modal', {
+				template: '<modal />',
 				abstract: true
 			})
-			.state('modals.login', {
-				url: '/login',
-				template: '<h1>hrlllo121314313</h1>'
-			});
+				.state('modal.login', {
+					url: '/login',
+					template: '<modal-login />'
+				})
+				.state('modal.signup', {
+					url: '/signup',
+					template: '<modal-signup />'
+				})
+				.state('modal.message', {
+					template: '<modal-message />',
+					params: {mes: null}
+				});
 
 	});
 

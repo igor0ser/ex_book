@@ -26,9 +26,7 @@ app.use(bodyParser.json());
 
 app.get('/model', (req, res) => res.send(posts));
 
-server = app.listen(8080, () => { 
-	console.log('Server is listening on port 8080.');
-});
+
 
 
 app.post('/login', (req, res) => {
@@ -73,4 +71,8 @@ app.post('/comment', (req, res) => {
 	}
 
 	res.end();
+});
+
+server = app.listen(8080, function(){ 
+	console.log('Server is listening on port 8080.');
 });
