@@ -1,14 +1,16 @@
 <div class="post clearfix">
-	<img ng-src={{postObj.postAvatar}} class="post-avatar">
+	<img ng-src='img/users/{{postObj.postAuthor}}.jpg' class="post-avatar">
 	<div class="post-text">
 		<h3 class="post-author">{{postObj.postAuthor}}</h3>
 		<p class="post-text-p">{{postObj.postText}}</p>
+		<p class="post-date">{{postObj.id | date:'hh:mm dd/MM/yy' }}</p>
 	</div>
 	<div class="post-comments">
 		<comment
 			ng-repeat="comment in postObj.comments"
 			author={{comment.commentAuthor}}
 			text={{comment.commentText}}
+			date={{comment.date}}
 		>
 		</comment>
 

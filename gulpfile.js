@@ -11,6 +11,7 @@ var open = require('gulp-open');
 var paths = {
 	localhost: 'http://localhost:8000/index.html',
 	angular: 'app/vendors/angular/angular.min.js',
+	angularRouter: 'app/vendors/angular-ui-router/release/angular-ui-router.min.js',
 	app: 'app/modules/app.js',
 	services: 'app/modules/services.js',
 	modules: 'app/modules/**/*.js',
@@ -23,7 +24,7 @@ var paths = {
 
 // concat 
 gulp.task('concat', function() {
-	gulp.src([ paths.angular, paths.app, paths.services, paths.modules ])
+	gulp.src([ paths.angular, paths.angularRouter, paths.app, paths.services, paths.modules ])
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(paths.dist));
 });

@@ -1,13 +1,15 @@
 <div class="header">
 
 	<div ng-if="vm.model.isLogined">
-		<img ng-src={{vm.model.avatar}}>
+		<img ng-src='img/users/{{vm.model.userName}}.jpg'>
 		<p>{{vm.model.userName}}</p>
 		<button class="btn btn-danger" ng-click="vm.signOut()">Sign out</button>
 	</div>
 
 	<div ng-if="!vm.model.isLogined">
-		<button class="btn btn-danger" ng-click="vm.showModal('.login')">Log in</button>
+	<!-- <button class="btn btn-danger" ng-click="vm.showModal('.login')">Log in</button> -->
+		<a class="btn btn-danger" ui-sref="modals.login">Log in</a>
+
 		<button class="btn btn-danger" ng-click="vm.showModal('.signup')">Sign up</button>
 	</div>
 

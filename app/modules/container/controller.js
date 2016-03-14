@@ -7,6 +7,7 @@
 		var vm = this;
 
 		vm.model = model;
+		console.log(model);
 	});
 
 })();

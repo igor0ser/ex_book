@@ -1,0 +1,24 @@
+<div>
+	<div class="clearfix">
+		<button class="btn btn-warning btn-close" ng-click="vm.close('.login')">x</button>
+	</div>
+	<form class="form-horizontal" ng-submit="vm.submit('/login')">
+		<div class="form-group">
+			<label for="input-login" class="col-sm-2 control-label">Login</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="input-login" placeholder="Login" required ng-model="vm.login">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="input-password" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="input-password" placeholder="Password" required ng-model='vm.password'>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-warning">Log in</button>
+			</div>
+		</div>
+	</form>
+</div>

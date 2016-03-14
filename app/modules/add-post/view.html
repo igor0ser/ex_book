@@ -1,4 +1,4 @@
 <form class="make-post" ng-submit="vm.submit()">
-	<textarea class="make-post-textarea" rows="3" required ng-model="vm.text"></textarea>
+	<textarea class="make-post-textarea" rows="3" required ng-model="vm.text" ng-enter="vm.submit()"></textarea>
 	<button class="btn btn-warning btn-lg make-post-btn">Make a post</button>
 </form>

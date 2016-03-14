@@ -1,33 +1,35 @@
 var posts = [
 	{
-		id: '0',
-		postAuthor: 'Korben Dallas',
+		id: '1457944068164',
+		postAuthor: 'korben',
 		postText: 'Yipikaye motherfucker!',
-		postAvatar: 'img/avatar1.jpg',
 		comments: [
 			{
-				commentAuthor: 'User1',
-				commentText: 'Lorem ipsum dolor sit amet.'
+				commentAuthor: 'user',
+				commentText: 'Lorem ipsum dolor sit amet.',
+				date: '1457944068977'
 			},
 			{
-				commentAuthor: 'User2',
-				commentText: 'blablabla'
+				commentAuthor: 'igor',
+				commentText: 'blablabla',
+				date: '1457944068555'
 			}
 		]
 	},
 	{
-		id: '1',
-		postAuthor: 'Raccoon Earl',
+		id: '1457944999164',
+		postAuthor: 'racoon',
 		postText: 'Privet vsem!',
-		postAvatar: 'img/avatar2.jpg',
 		comments: [
 			{
-				commentAuthor: 'Corban Dallas',
-				commentText: 'lol'
+				commentAuthor: 'joker',
+				commentText: 'lol',
+				date: '1457944990000'
 			},
 			{
-				commentAuthor: 'Raccoon Earl',
-				commentText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, repudiandae, sed.'
+				commentAuthor: 'racoon',
+				commentText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, repudiandae, sed.',
+				date: '1457944999199'
 			}
 		]
 	}

@@ -7,7 +7,6 @@
 		var vm = this;
 
 		vm.text = '';
-		console.log($scope.postId);
 
 		vm.submit = function() {
 			var data = {

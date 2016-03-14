@@ -8,7 +8,8 @@
 			templateUrl: '/modules/comment/view.html',
 			scope: {
 				author: '@',
-				text: '@'
+				text: '@',
+				date: '@'
 			},
 			replace: true
 		};
