@@ -6,9 +6,10 @@
 	app.service('serverConnection', function($http, model){
 		this.getData = () => {
 			$http
-				.get('/model')
+				.get('/post')
 				.success((data) => {
 					model.posts = data;
+					console.log(model.posts);
 				})
 				.error(() => {
 					console.log('error');
@@ -62,6 +63,12 @@
 					event.preventDefault();
 				}
 			});
+		};
+	});
+
+	app.filter('reverse', function() {
+		return function(items) {
+			return items.slice().reverse();
 		};
 	});
 

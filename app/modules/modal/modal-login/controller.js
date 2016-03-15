@@ -22,7 +22,6 @@
 					$state.go('modal.message', {mes: data.data});
 				} else {
 					model.userName = vm.login;
-					model.avatar = data.data;
 					model.isLogined = true;
 					$state.go('modal.message', {mes : 'You were succesfully authorized'});
 				}

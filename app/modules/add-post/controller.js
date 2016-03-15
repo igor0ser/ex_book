@@ -11,11 +11,9 @@
 
 		vm.submit = function() {
 			var data = {
-				id: new Date().getTime(),
+				date: new Date().getTime(),
 				postAuthor: model.userName,
-				postText: vm.text,
-				postAvatar: model.avatar,
-				comments: []
+				postText: vm.text
 			};
 
 			serverConnection.sendData('/post', data, () => vm.text = '');

@@ -5,6 +5,7 @@
 
 	app.controller('AddCommentController', function($scope, model, serverConnection){
 		var vm = this;
+		console.log($scope.postId);
 
 		vm.text = '';
 
@@ -12,7 +13,8 @@
 			var data = {
 				id: $scope.postId,
 				commentAuthor: model.userName,
-				commentText: vm.text
+				commentText: vm.text,
+				date: new Date().getTime()
 			};
 
 			serverConnection.sendData('/comment', data, () => vm.text = '');

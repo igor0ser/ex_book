@@ -12,8 +12,6 @@
 		};
 
 		vm.showModal = modalService.showModal;
-
-
 	});
 
 })();

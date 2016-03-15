@@ -2,9 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
+
+
 var users = require('./server/data/users');
 var posts = require('./server/data/posts');
 var isFileExists = require('./server/helpers/isFileExists.js');
+var db = require('./server/db/db.js');
 
 var app = express();
 var server;
@@ -24,55 +29,70 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-app.get('/model', (req, res) => res.send(posts));
+app.get('/post', (req, res) => {
+	db.Post.find((err, posts) => res.send(posts));
+});
 
+app.post('/post', (req, res) => {
+	
+	var post = new db.Post({
+		date: req.body.date,
+		postAuthor: req.body.postAuthor,
+		postText: req.body.postText,
+		comments: []
+	});
+
+	post.save((err) => {
+		if (err) console.log('error = ', err);
+		res.end();
+	});
+});
 
 
 
 app.post('/login', (req, res) => {
-	console.log(req.body);
 
-	var isLogined = false;
-	var imgUrl;
-
-	for (var i = 0; i < users.length; i++){
-		if (users[i].login === req.body.login && users[i].password === req.body.password) {
-			isLogined = true;
-			imgUrl = users[i].avatar;
+	db.User.find((err, users) => {
+		var isLogined = false;
+		for (var i = 0; i < users.length; i++){
+			if (users[i].login === req.body.login && users[i].password === req.body.password) {
+				isLogined = true;
+			}
 		}
-	}
 
-	if (isLogined) {
-		res.send(imgUrl);
-		res.end();
-	} else {
-		res.send('Wrong login or password');
-		res.end();
-	}
-
+		if (isLogined) {
+			res.send('Was logined');
+			res.end();
+		} else {
+			res.send('Wrong login or password');
+			res.end();
+		}
+	});
 });
 
 
-app.post('/post', (req, res) => {
-	posts.unshift(req.body);
-	res.end();
-});
 
 app.post('/comment', (req, res) => {
-	console.log(req.body);
+	var id = new ObjectId(req.body.id);
+	console.log(id);
+
 	var comment = {
 		commentAuthor: req.body.commentAuthor,
-		commentText: req.body.commentText
+		commentText: req.body.commentText,
+		date: req.body.date
 	};
-	for (var i = 0; i < posts.length; i++){
-		if (posts[i].id == req.body.id) {
-			posts[i].comments.unshift(comment);
-		}
-	}
 
-	res.end();
+	db.Post.findByIdAndUpdate(
+		id,
+		{$push: {'comments': comment}},
+		{safe: true, upsert: true},
+		(err, model) => {
+			if (err) console.log(err);
+			res.end();
+		}
+		);
 });
 
-server = app.listen(8080, function(){ 
+server = app.listen(8080, () => { 
 	console.log('Server is listening on port 8080.');
 });

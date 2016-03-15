@@ -5,7 +5,7 @@
 	<add-post ng-if="vm.model.isLogined"></add-post>
 
 	<post
-		ng-repeat="post in vm.model.posts"
+		ng-repeat="post in vm.model.posts | reverse"
 		post-obj="post"
 		is-logined="vm.model.isLogined"
 	>
