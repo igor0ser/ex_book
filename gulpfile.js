@@ -13,7 +13,7 @@ var paths = {
 	angular: 'app/vendors/angular/angular.min.js',
 	angularRouter: 'app/vendors/angular-ui-router/release/angular-ui-router.min.js',
 	app: 'app/modules/app.js',
-	services: 'app/modules/services.js',
+	helpers: 'app/modules/helpers.js',
 	modules: 'app/modules/**/*.js',
 	dist: 'app/dist',
 	port: 'http://localhost:8080/',
@@ -31,7 +31,7 @@ gulp.task('nodemon', function() {
 
 // concat 
 gulp.task('concat', function() {
-	gulp.src([ paths.angular, paths.angularRouter, paths.app, paths.services, paths.modules ])
+	gulp.src([ paths.angular, paths.angularRouter, paths.app, paths.helpers, paths.modules ])
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(paths.dist));
 });
@@ -40,7 +40,7 @@ gulp.task('concat', function() {
 
 // watch files, transpile if one of them changes
 gulp.task('watch', function() {
-	gulp.watch([paths.app, paths.services, paths.modules], ['concat']);
+	gulp.watch([paths.app, paths.helpers, paths.modules], ['concat']);
 });
 
 //open

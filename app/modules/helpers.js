@@ -22,34 +22,20 @@
 				if (cb) cb();
 			});
 		};
-
-
 	});
 
 
-	app.service('modalService', function ($document) {
-		var faden = document.querySelector('.faden');
-
-		this.showModal = (selector) => {
-			var modal = document.querySelector('.modals'+selector);
-
-			modal.classList.remove('d-n');
-			faden.classList.remove('d-n');
-
-			setTimeout(() => {
-				faden.classList.remove('o0');
-			}, 1);
-		};
-
-		this.closeModal = (selector, cb) => {
-			var modal = document.querySelector('.modals'+selector);
+	app.service('closeModal', function ($state) {
+		var closeModal = (state, params) => {
+			var faden = document.querySelector('.faden');
 			faden.classList.add('o0');
 			setTimeout(() => {
-				faden.classList.add('d-n');
-				modal.classList.add('d-n');
-				if (cb) cb();
-			}, 500);
+				faden.classList.remove('o0');
+				$state.go(state, params);
+			}, 300);
+
 		};
+		return closeModal;
 	});
 
 

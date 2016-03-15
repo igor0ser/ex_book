@@ -3,9 +3,8 @@
 
 	var app = angular.module('app');
 
-	app.controller('ModalMessageController', function($stateParams, closeModal){
+	app.controller('ModalController', function(closeModal){
 		var $ctrl = this;
-		$ctrl.mes = $stateParams.mes;
 		$ctrl.closeModal = closeModal;
 	});
 

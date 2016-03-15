@@ -3,12 +3,11 @@
 
 	var app = angular.module('app');
 
-	app.controller('ModalLoginController', function($scope, $http, model, $state){
+	app.controller('ModalLoginController', function($http, model, closeModal){
 		var $ctrl = this;
 		$ctrl.login = '';
 		$ctrl.password = '';
 		$ctrl.passwordRepeat = '';
-
 
 		$ctrl.submit = function(url) {
 			var data = {
@@ -19,11 +18,11 @@
 			$http.post(url, data).then((data) => {
 				console.log(data.data);
 				if (data.data === 'Wrong login or password') {
-					$state.go('modal.message', {mes: data.data});
+					closeModal('modal.message', {mes: data.data});
 				} else {
 					model.userName = $ctrl.login;
 					model.isLogined = true;
-					$state.go('modal.message', {mes : 'You were succesfully authorized'});
+					closeModal('modal.message', {mes : 'You were succesfully authorized'});
 				}
 			});
 		};

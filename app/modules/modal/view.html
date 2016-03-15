@@ -1,5 +1,8 @@
 <div class="faden">
-	<div class="modals" ui-view>
-
+	<div class="modals">
+		<div class="clearfix">
+			<button class="btn btn-warning btn-close" ng-click="$ctrl.closeModal('home')">x</button>
+		</div>
+		<ui-view></ui-view>
 	</div>
 </div>
