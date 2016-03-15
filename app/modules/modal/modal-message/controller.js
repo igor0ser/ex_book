@@ -4,8 +4,8 @@
 	var app = angular.module('app');
 
 	app.controller('ModalMessageController', function($stateParams){
-		var vm = this;
-		vm.mes = $stateParams.mes;
+		var $ctrl = this;
+		$ctrl.mes = $stateParams.mes;
 	});
 
 })();

@@ -21,6 +21,13 @@ var paths = {
 
 
 
+//nodemon
+gulp.task('nodemon', function() {
+	nodemon({
+		script: 'server/server.js'
+	});
+});
+
 
 // concat 
 gulp.task('concat', function() {
@@ -30,13 +37,6 @@ gulp.task('concat', function() {
 });
 
 
-
-//nodemon
-gulp.task('nodemon', function() {
-	nodemon({
-		script: 'server.js'
-	});
-});
 
 // watch files, transpile if one of them changes
 gulp.task('watch', function() {

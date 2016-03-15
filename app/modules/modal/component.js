@@ -3,12 +3,8 @@
 
 	var app = angular.module('app');
 
-	app.directive('modal', function(){
-		return {
+	app.component('modal', {
 			templateUrl: '/modules/modal/view.html',
-			scope: {},
-			replace: true
-		};
 	});
 
 })();
