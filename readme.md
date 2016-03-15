@@ -16,10 +16,10 @@ To run SPA:
 Available credentials for app:
 
 Login / Password:
-user / user
-korben / korben
-igor / igor
-racoon / racoon
+user / user,
+korben / korben,
+igor / igor,
+racoon / racoon,
 joker / joker
 
 
