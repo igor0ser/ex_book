@@ -5,9 +5,6 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
-
-var users = require('./server/data/users');
-var posts = require('./server/data/posts');
 var isFileExists = require('./server/helpers/isFileExists.js');
 var db = require('./server/db/db.js');
 
