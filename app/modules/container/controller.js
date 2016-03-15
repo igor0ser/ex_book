@@ -4,10 +4,9 @@
 	var app = angular.module('app');
 
 	app.controller('ContainerController', function(model){
-		var vm = this;
+		var $ctrl = this;
 
-		vm.model = model;
-		console.log(model);
+		$ctrl.model = model;
 	});
 
 })();

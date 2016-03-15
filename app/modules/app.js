@@ -3,7 +3,7 @@
 
 	app.value('model', {
 		posts: [],
-		isLogined: false,
+		isLogined: true,
 		userName: 'user',
 		avatar: 'img/avatar0.jpg'
 	});

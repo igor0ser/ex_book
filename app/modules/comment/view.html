@@ -1,8 +1,8 @@
 <div class="comment">
-	<img ng-src="img/users/{{author}}.jpg" height="225" width="225" alt="">
+	<img ng-src="img/users/{{$ctrl.author}}.jpg" height="225" width="225" alt="">
 	<div>
-		<p class='comment-author'>{{author}}</p>
-		<p class='comment-text'>{{text}}</p>
-		<p class='comment-date'>{{date | date:'hh:mm dd/MM/yy'}}</p>
+		<p class='comment-author'>{{$ctrl.author}}</p>
+		<p class='comment-text'>{{$ctrl.text}}</p>
+		<p class='comment-date'>{{$ctrl.date | date:'hh:mm dd/MM/yy'}}</p>
 	</div>
 </div>

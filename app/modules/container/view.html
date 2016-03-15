@@ -2,12 +2,12 @@
 
 	<header></header>
 
-	<add-post ng-if="vm.model.isLogined"></add-post>
+	<add-post ng-if="$ctrl.model.isLogined"></add-post>
 
 	<post
-		ng-repeat="post in vm.model.posts | reverse"
+		ng-repeat="post in $ctrl.model.posts | orderBy: '-date'"
 		post-obj="post"
-		is-logined="vm.model.isLogined"
+		is-logined="$ctrl.model.isLogined"
 	>
 	</post>
 

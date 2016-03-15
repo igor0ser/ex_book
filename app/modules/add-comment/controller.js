@@ -3,21 +3,20 @@
 
 	var app = angular.module('app');
 
-	app.controller('AddCommentController', function($scope, model, serverConnection){
-		var vm = this;
-		console.log($scope.postId);
+	app.controller('AddCommentController', function(model, serverConnection){
+		var $ctrl = this;
 
-		vm.text = '';
+		$ctrl.text = '';
 
-		vm.submit = function() {
+		$ctrl.submit = function() {
 			var data = {
-				id: $scope.postId,
+				id: $ctrl.postId,
 				commentAuthor: model.userName,
-				commentText: vm.text,
+				commentText: $ctrl.text,
 				date: new Date().getTime()
 			};
 
-			serverConnection.sendData('/comment', data, () => vm.text = '');
+			serverConnection.sendData('/comment', data, () => $ctrl.text = '');
 		};
 	});
 
