@@ -3,7 +3,7 @@
 
 	var app = angular.module('app');
 
-	app.controller('AddPostController', function(model, serverConnection, socket){
+	app.controller('AddPostController', function(model, serverConnection, socket, $rootScope){
 		var $ctrl = this;
 
 		$ctrl.model = model;
@@ -20,15 +20,10 @@
 
 			$ctrl.text = '';
 
-			//model.posts.push(post);
-
-			//serverConnection.sendData('/post', post, () => $ctrl.text = '');
-
-			socket.emit('post', post, function (data){
-				console.log('data = ', data);
+			socket.emit('post', post, (data) => {
 				post.id = data;
-				model.posts.push(post);
-				console.log(model);
+				//model.posts.unshift(post);
+				$ctrl.text = '';
 			});
 		};
 
