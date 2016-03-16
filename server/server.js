@@ -29,19 +29,19 @@ io.on('connection', function (socket) {
 		});
 	});	
 
-	socket.on('comment', (data, cb) => {
-		var id = new ObjectId(data.id);
+	socket.on('comment', (comment, cb) => {
+		var id = new ObjectId(comment.postId);
 		console.log(id);
+		console.log(comment);
 
 
 		db.Post.findByIdAndUpdate(
 			id,
-			{$push: {'comments': data}},
+			{$push: {'comments': comment}},
 			{safe: true, upsert: true},
-			(err, comment) => {
+			(err, model) => {
 				if (err) console.log(err);
-				console.log(comment);
-				socket.broadcast.emit('comment', data);
+				socket.broadcast.emit('comment', comment);
 				cb('done');
 			});
 	});

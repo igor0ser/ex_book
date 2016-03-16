@@ -43,10 +43,11 @@
 
 	app.run(function (socket, model){
 		socket.on('post', function (data) {
-			model.posts.unshift(data);
+			model.posts.push(data);
 		});
-		socket.on('comment', function (data) {
-			model.posts.filter(item => item._id == data.id)[0].comments.push(data);
+		socket.on('comment', function (comment) {
+			console.log(comment);
+			model.posts.filter(post => post._id === comment.postId)[0].comments.push(comment);
 		});
 	});
 

@@ -7,7 +7,7 @@
 	</div>
 	<div class="post-comments">
 		<comment
-			ng-repeat="comment in $ctrl.postObj.comments | orderBy: '-date'"
+			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date'"
 			author={{comment.commentAuthor}}
 			text={{comment.commentText}}
 			date={{comment.date}}
