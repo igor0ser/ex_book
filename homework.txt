@@ -1,0 +1,45 @@
+Level 1:
+As unauthorized user I can create  new user
+As unauthorized user I can login with credentials of known user
+As unauthorized user I can see wall but can't influence on it
+As user I can filter my posts
+Level 2:
+As user I can remove my comment
+As unauthorized user I can login with github account (create new user or use existing)
+Level 3:
+As user I can see only last 10 posts
+As user I can load more 10 posts
+As user I can see last 3 comments
+As user I can load more 10 comments
+Level 4
+As user I can add picture to my account
+As user I can see profile pictures of comments and posts authors
+
+
+
+
+==== ALL ====
+Variant a
+Create posts wall
+Level 1:
+As unauthorized user I can create  new user
+As unauthorized user I can login with credentials of known user
+As unauthorized user I can see wall but can't influence on it
+As user I can post on wall
+As user I can see all post
+As user I can filter my posts
+Level 2:
+As user I can comment post
+As user I can remove my comment
+As user I can see comments
+As unauthorized user I can login with github account (create new user or use existing)
+Level 3:
+As user I can see only last 10 posts
+As user I can load more 10 posts
+As user I can see last 3 comments
+As user I can load more 10 comments
+Level 4
+As user I can see new posts immediately
+As user I can see new comments immediately
+As user I can add picture to my account
+As user I can see profile pictures of comments and posts authors

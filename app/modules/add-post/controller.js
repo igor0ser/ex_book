@@ -22,8 +22,6 @@
 				model.posts.push(post);
 				$ctrl.text = '';
 			});
-
-			console.log(model.posts);
 		};
 
 	});

@@ -5,7 +5,8 @@
 		posts: [],
 		isLogined: true,
 		userName: 'user',
-		avatar: 'img/avatar0.jpg'
+		avatar: 'img/avatar0.jpg',
+		filter: ''
 	});
 
 	app.run((serverConnection) => {
@@ -46,7 +47,6 @@
 			model.posts.push(data);
 		});
 		socket.on('comment', function (comment) {
-			console.log(comment);
 			model.posts.filter(post => post._id === comment.postId)[0].comments.push(comment);
 		});
 	});

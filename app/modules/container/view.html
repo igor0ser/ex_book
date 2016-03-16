@@ -3,9 +3,10 @@
 	<header></header>
 
 	<add-post ng-if="$ctrl.model.isLogined"></add-post>
-
 	<post
-		ng-repeat="post in $ctrl.model.posts | orderBy: '-date'"
+		ng-repeat="post in $ctrl.model.posts 
+								| orderBy: '-date'
+								| filter: {postAuthor: $ctrl.model.filter}"
 		post-obj="post"
 		is-logined="$ctrl.model.isLogined"
 	>

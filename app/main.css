@@ -13,6 +13,10 @@ body {
 	background: url('/img/background.png');
 }
 
+input {
+	color: #000;
+}
+
 .header{
 	height: 50px;
 	background: #000;
@@ -20,10 +24,12 @@ body {
 	border-bottom-left-radius: 4px;
 }
 
-.header .btn{
+.header .btn,
+.header input {
 	margin-top: 7px;
 	float: right;
 	margin-right: 15px;
+	height: 34px;
 }
 
 .header img{

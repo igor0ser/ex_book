@@ -4,6 +4,7 @@
 		<img ng-src='img/users/{{$ctrl.model.userName}}.jpg'>
 		<p>{{$ctrl.model.userName}}</p>
 		<button class="btn btn-danger" ng-click="$ctrl.signOut()">Sign out</button>
+		<input type="text" placeholder="Filter by user..." ng-model="$ctrl.model.filter">
 	</div>
 
 	<div ng-if="!$ctrl.model.isLogined">
