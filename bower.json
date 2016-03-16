@@ -9,6 +9,7 @@
   "dependencies": {
     "bootstrap-css-only": "latest",
     "angular": "~1.5.0",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "socket.io-client": "~1.4.5"
   }
 }

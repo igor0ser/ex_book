@@ -9,7 +9,6 @@
 				.get('/post')
 				.success((data) => {
 					model.posts = data;
-					console.log(model.posts);
 				})
 				.error(() => {
 					console.log('error');
@@ -36,6 +35,11 @@
 
 		};
 		return closeModal;
+	});
+
+	app.service('socket', function(){
+		var socket = io.connect('');
+		return socket;
 	});
 
 
