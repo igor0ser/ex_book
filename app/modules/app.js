@@ -41,11 +41,19 @@
 
 	});
 
-	app.run((socket) => {
+	app.run(function (socket, model){
 		console.log(socket);
 		socket.on('news', function (data) {
 			console.log(data);
 			socket.emit('my other event', { my: 'data' });
+		});	
+		socket.on('post', function (data) {
+			console.log(model);
+			console.log(data);
+			model.posts.push(data);
+
+			console.log(':: after push');
+			console.log(model);
 		});
 	});
 

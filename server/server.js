@@ -1,7 +1,7 @@
 var express = require('express');
 var route = require('./route');
 var middleware = require('./middleware');
-
+var db = require('./db');
 
 var app = express();
 var server;
@@ -22,7 +22,15 @@ io.on('connection', function (socket) {
 	});
 
 
-	socket.on('post', (data) => {
+	socket.on('post', (data, cb) => {
 		console.log(data);
+
+		var post = new db.Post(data);
+		post.save((err, post) => {
+			console.log(post);
+			socket.emit('post', post);
+			cb(post.id);
+		});
+
 	});
 });
