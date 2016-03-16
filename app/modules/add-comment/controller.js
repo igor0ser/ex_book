@@ -3,7 +3,7 @@
 
 	var app = angular.module('app');
 
-	app.controller('AddCommentController', function(model, serverConnection){
+	app.controller('AddCommentController', function(model, serverConnection, socket){
 		var $ctrl = this;
 
 		$ctrl.text = '';
@@ -16,7 +16,13 @@
 				date: new Date().getTime()
 			};
 
-			serverConnection.sendData('/comment', data, () => $ctrl.text = '');
+			//serverConnection.sendData('/comment', data, () => $ctrl.text = '');
+			socket.emit('comment', data, (dataCB) => {
+				//post.id = data;
+				//model.posts.unshift(post);
+				model.posts.filter(item => item._id == data.id)[0].comments.push(data);
+				$ctrl.text = '';
+			});
 		};
 	});
 

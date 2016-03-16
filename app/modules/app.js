@@ -45,6 +45,9 @@
 		socket.on('post', function (data) {
 			model.posts.unshift(data);
 		});
+		socket.on('comment', function (data) {
+			model.posts.filter(item => item._id == data.id)[0].comments.push(data);
+		});
 	});
 
 })();
