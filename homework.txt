@@ -2,7 +2,6 @@ Level 1:
 As unauthorized user I can create  new user
 As unauthorized user I can login with credentials of known user
 As unauthorized user I can see wall but can't influence on it
-As user I can filter my posts
 Level 2:
 As user I can remove my comment
 As unauthorized user I can login with github account (create new user or use existing)

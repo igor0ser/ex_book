@@ -117,6 +117,14 @@ input {
 	margin-bottom: 10px;
 	background: #444;
 	border-radius: 4px;
+	position: relative;
+}
+
+.comment .btn{
+	position: absolute;
+	top: 50%;
+	margin-top: -17px;
+
 }
 
 .comment p {

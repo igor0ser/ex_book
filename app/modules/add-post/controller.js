@@ -3,7 +3,7 @@
 
 	var app = angular.module('app');
 
-	app.controller('AddPostController', function(model, socket){
+	app.controller('AddPostController', function(model, modelChanger, socket){
 		var $ctrl = this;
 
 		$ctrl.model = model;
@@ -19,7 +19,7 @@
 
 			socket.emit('post', post, (data) => {
 				post._id = data;
-				model.posts.push(post);
+				modelChanger.addPost(post);
 				$ctrl.text = '';
 			});
 		};

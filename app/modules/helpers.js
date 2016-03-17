@@ -40,25 +40,33 @@
 	app.service('socket', function($rootScope){
 		var socket = io.connect('');
 
-		return {
-			on: function (eventName, callback) {
-				socket.on(eventName, function () {
-					var args = arguments;
-					$rootScope.$apply(function () {
+		this.on = function(eventName, callback) {
+			socket.on(eventName, function () {
+				var args = arguments;
+				$rootScope.$apply(function () {
+					callback.apply(socket, args);
+				});
+			});
+		};
+
+		this.emit  = function(eventName, data, callback) {
+			socket.emit(eventName, data, function () {
+				var args = arguments;
+				$rootScope.$apply(function () {
+					if (callback) {
 						callback.apply(socket, args);
-					});
+					}
 				});
-			},
-			emit: function (eventName, data, callback) {
-				socket.emit(eventName, data, function () {
-					var args = arguments;
-					$rootScope.$apply(function () {
-						if (callback) {
-							callback.apply(socket, args);
-						}
-					});
-				});
-			}
+			});
+		};
+	});
+
+	app.service('modelChanger', function(model){
+		this.addComment = function(comment){
+			model.posts.filter(post => post._id === comment.postId)[0].comments.push(comment);
+		};
+		this.addPost = function(post){
+			model.posts.push(post);
 		};
 	});
 

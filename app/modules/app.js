@@ -42,11 +42,14 @@
 
 	});
 
-	app.run(function (socket, model){
-		socket.on('post', function (data) {
-			model.posts.push(data);
+	app.run(function (socket, model, modelChanger){
+		socket.on('post', function (post) {
+			modelChanger.addPost(post);
 		});
 		socket.on('comment', function (comment) {
+			modelChanger.addComment(comment);
+		});
+		socket.on('remove comment', function (comment) {
 			model.posts.filter(post => post._id === comment.postId)[0].comments.push(comment);
 		});
 	});
