@@ -10,6 +10,7 @@
 
 		$ctrl.signOut = function(){
 			model.isLogined = false;
+			model.userName = '';
 		};
 
 	});

@@ -3,22 +3,19 @@
 
 	var app = angular.module('app');
 
-	app.controller('AddCommentController', function(model, modelChanger, socket){
+	app.controller('CommentController', function(model, modelChanger, socket){
 		var $ctrl = this;
+		$ctrl.model = model;
 
-		$ctrl.text = '';
-
-		$ctrl.submit = function() {
+		$ctrl.del = function() {
 			var comment = {
 				postId: $ctrl.postId,
-				commentAuthor: model.userName,
-				commentText: $ctrl.text,
-				date: new Date().getTime()
+				commentAuthor: $ctrl.author,
+				date: +$ctrl.date
 			};
 
-			socket.emit('comment', comment, () => {
-				modelChanger.addComment(comment);
-				$ctrl.text = '';
+			socket.emit('remove comment', comment, () => {
+				modelChanger.removeComment(comment);
 			});
 		};
 	});

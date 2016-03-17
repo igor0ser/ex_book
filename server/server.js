@@ -31,9 +31,6 @@ io.on('connection', function (socket) {
 
 	socket.on('comment', (comment, cb) => {
 		var id = new ObjectId(comment.postId);
-		console.log(id);
-		console.log(comment);
-
 
 		db.Post.findByIdAndUpdate(
 			id,
@@ -42,6 +39,23 @@ io.on('connection', function (socket) {
 			(err, model) => {
 				if (err) console.log(err);
 				socket.broadcast.emit('comment', comment);
+				cb('done');
+			});
+	});	
+
+	socket.on('remove comment', (comment, cb) => {
+		var id = new ObjectId(comment.postId);
+		console.log('remove comment');
+		console.log(id);
+		console.log(comment);
+
+
+		db.Post.findByIdAndUpdate(
+			id,
+			{$pull: {'comments': comment}},
+			(err, model) => {
+				if (err) console.log(err);
+				socket.broadcast.emit('remove comment', comment);
 				cb('done');
 			});
 	});

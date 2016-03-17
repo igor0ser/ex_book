@@ -4,6 +4,13 @@
 		<p class='comment-author'>{{$ctrl.author}}</p>
 		<p class='comment-text'>{{$ctrl.text}}</p>
 		<p class='comment-date'>{{$ctrl.date | date:'hh:mm dd/MM/yy'}}</p>
+		<p>123{{$ctrl.commentObj}}</p>
 	</div>
-	<button class="btn btn-warning">Del</button>
+	<button 
+		ng-show = "$ctrl.author === $ctrl.model.userName"
+		ng-click = "$ctrl.del()"
+		class="btn btn-warning"
+		>
+		Del
+	</button>
 </div>

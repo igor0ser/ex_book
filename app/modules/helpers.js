@@ -62,11 +62,18 @@
 	});
 
 	app.service('modelChanger', function(model){
-		this.addComment = function(comment){
-			model.posts.filter(post => post._id === comment.postId)[0].comments.push(comment);
-		};
 		this.addPost = function(post){
 			model.posts.push(post);
+		};
+		this.addComment = function(comment){
+			var post = model.posts.filter(post => post._id === comment.postId)[0];
+			post.comments.push(comment);
+		};
+		this.removeComment = function(comment){
+			var comments = model.posts.filter(post => post._id === comment.postId)[0].comments;
+			var commentToDel = comments.filter(item => item.date === comment.date && item.commentAuthor === comment.commentAuthor )[0];
+			var i = comments.indexOf(commentToDel);
+			comments.splice(i, 1);
 		};
 	});
 

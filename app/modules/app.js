@@ -50,7 +50,7 @@
 			modelChanger.addComment(comment);
 		});
 		socket.on('remove comment', function (comment) {
-			model.posts.filter(post => post._id === comment.postId)[0].comments.push(comment);
+			modelChanger.removeComment(comment);
 		});
 	});
 
