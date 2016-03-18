@@ -3,8 +3,8 @@
 
 	app.value('model', {
 		posts: [],
-		isLogined: false,
-		userName: '',
+		isLogined: true,
+		userName: 'john',
 		filter: ''
 	});
 

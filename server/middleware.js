@@ -8,10 +8,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var db = require('./db');
 
 
-var flash = require('connect-flash');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-
 
 function middleware(app){
 	app.use((req, res, next) => {
@@ -25,12 +21,8 @@ function middleware(app){
 		} else next();
 	});
 	app.use(express.static(__dirname + '/../app'));
-	app.use(bodyParser.urlencoded({extended: true}));
+	app.use(bodyParser.urlencoded({extended: true, uploadDir:'./uploads'}));
 	app.use(bodyParser.json());
-/*
-	app.use(cookieParser('keyboard cat'));
-	app.use(session({ cookie: { maxAge: 60000 }}));
-	app.use(flash);*/
 
 	passport.use(new LocalStrategy({ usernameField: 'login',	passwordField: 'password'},
 		function(username, password, done) {

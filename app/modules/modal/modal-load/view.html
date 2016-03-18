@@ -1,8 +1,8 @@
-<form action="/load" method="post">
+<form action="/load" method="post" enctype="multipart/form-data">
 	<div class="form-group text-center">
 		<label for="exampleInputFile">File input</label>
-		<input type="file" id="exampleInputFile" required class="file-input">
-		<input name="username" type="text" value="eee">
+		<input type="file" id="exampleInputFile" required class="file-input" name="avatar">
+	<input name="username" type="text" value="john">
 	</div>
 	<button type="submit" class="btn btn-warning">Submit</button>
 </form>

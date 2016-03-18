@@ -5,7 +5,7 @@
 
 	app.component('modalSignup', {
 		templateUrl: 'modules/modal/modal-signup/view.html',
-		controller: 'ModalLoginController'
+		controller: 'ModalSignupController'
 	});
 
 })();

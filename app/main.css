@@ -32,6 +32,10 @@ input {
 	height: 34px;
 }
 
+.header input{
+	padding: 10px;
+}
+
 .header img{
 	height: 40px;
 	width: 40px;
