@@ -3,9 +3,8 @@
 
 	app.value('model', {
 		posts: [],
-		isLogined: true,
-		userName: 'user',
-		avatar: 'img/avatar0.jpg',
+		isLogined: false,
+		userName: '',
 		filter: ''
 	});
 
@@ -37,6 +36,10 @@
 				.state('modal.message', {
 					template: '<modal-message />',
 					params: {mes: null}
+				})
+				.state('modal.load', {
+					url: '/load',
+					template: '<modal-load />'
 				});
 
 

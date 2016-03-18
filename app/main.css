@@ -166,9 +166,14 @@ p.comment-text {
 	border-radius: 4px;
 }
 
-.comment-add {
+.comment-add,
+.see-comm {
 	display: block;
 	margin: 0 auto;
+}
+
+.see-comm{
+	margin-bottom: 10px;
 }
 
 .faden{
@@ -231,4 +236,9 @@ p.comment-text {
 
 .o0 {
 	opacity: 0;
+}
+
+.file-input{
+	margin-left: 185px;
+	color: #fff;
 }

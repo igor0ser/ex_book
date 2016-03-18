@@ -7,7 +7,7 @@
 	</div>
 	<div class="post-comments">
 		<comment
-			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date'"
+			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date' | limitTo: $ctrl.limit"
 			author = {{comment.commentAuthor}}
 			text = {{comment.commentText}}
 			date = {{comment.date}}
@@ -15,6 +15,13 @@
 		>
 		</comment>
 
+		<button 
+			class="btn btn-warning see-comm" 
+			ng-click="$ctrl.limit = $ctrl.limit + 10"
+			ng-disabled = "$ctrl.limit >= $ctrl.postObj.comments.length"
+		>
+			See another ten comments
+		</button>
 		<add-comment post-id={{$ctrl.postObj._id}} ng-if="$ctrl.isLogined"></add-comment>
 	</div>
 </div>
