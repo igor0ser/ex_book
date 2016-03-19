@@ -5,9 +5,6 @@ Level 3:
 As user I can see only last 10 posts
 As user I can load more 10 posts
 
-Level 4
-As user I can add picture to my account
-
 ==== ALL ====
 Variant a
 Create posts wall

@@ -6,7 +6,7 @@ var db = require('./db');
 var passport = require('passport');
 
 var multer	= require('multer');
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({ dest: 'uploads/' });
 
 
 var multipart = require('connect-multiparty');
@@ -112,13 +112,13 @@ function route(app){
 
 
 	app.post('/load', (req, res) => {
-		var username = req.body.username;
 		var form = new multiparty.Form();
 		form.parse(req, function(err, fields, files) {
 			console.log('from form parse');
-			console.log(files.avatar[0].path);
+			console.log(fields);
+			var username = fields.username[0];
 			var oldPath = files.avatar[0].path;
-			var newPath = 'img/users/' + username + '.jpg';
+			var newPath = 'app/img/users/' + username + '.jpg';
 			var readStream = fs.createReadStream(oldPath);
 			var writeStream = fs.createWriteStream(newPath);
 			readStream.pipe(writeStream);
