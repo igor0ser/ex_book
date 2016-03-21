@@ -69,7 +69,7 @@ input {
 .make-post-textarea{
 	width: 700px;
 	color: #333;
-	margin: 0px 50px 10px;
+	margin: 0 50px 10px;
 	overflow: hidden;
 	background: #ddd;
 	border-radius: 4px;
@@ -97,7 +97,7 @@ input {
 	height: 125px;
 	width: 125px;
 	border-radius: 50%;
-	margin: 10px 0 15px 50px;
+	margin: 10px 0 5px 50px;
 }
 
 .post-text {
@@ -252,4 +252,5 @@ p.comment-text {
 	margin: auto;
 	width: 50%;
 	font-weight: bold;
+	margin-bottom: 20px;
 }

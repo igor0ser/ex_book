@@ -5,8 +5,7 @@
 
 	app.controller('PostController', function(){
 		var $ctrl = this;
-		$ctrl.limit = 3;
-
+		$ctrl.limit = -3;
 	});
 
 })();

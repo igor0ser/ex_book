@@ -13,7 +13,7 @@ function route(app){
 		console.log("lastPost = " + lastPost);
 		db.Post.find(
 			{date: {$lte: lastPost}},
-			'date postAuthor postText',
+			'_id date postAuthor postText comments',
 			{sort: {date: -1}, limit: 10},
 			(err, posts) => {
 				res.send(posts);

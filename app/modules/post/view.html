@@ -6,6 +6,14 @@
 		<p class="post-date">{{$ctrl.postObj.date | date:'hh:mm dd/MM/yy' }}</p>
 	</div>
 	<div class="post-comments">
+		<button 
+			class="btn btn-warning see-comm" 
+			ng-click="$ctrl.limit = $ctrl.limit - 10"
+			ng-show = "$ctrl.limit >= -$ctrl.postObj.comments.length"
+		>
+			See previous comments
+		</button>
+
 		<comment
 			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date' | limitTo: $ctrl.limit"
 			author = {{comment.commentAuthor}}
@@ -15,13 +23,6 @@
 		>
 		</comment>
 
-		<button 
-			class="btn btn-warning see-comm" 
-			ng-click="$ctrl.limit = $ctrl.limit + 10"
-			ng-disabled = "$ctrl.limit >= $ctrl.postObj.comments.length"
-		>
-			See another ten comments
-		</button>
 		<add-comment post-id={{$ctrl.postObj._id}} ng-if="$ctrl.isLogined"></add-comment>
 	</div>
 </div>

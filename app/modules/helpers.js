@@ -13,8 +13,12 @@
 					lastPost: model.lastPost
 				})
 				.success((data) => {
-					model.lastPost = data[9].date;
-					console.log(model.lastDate);
+					if (data[9]){
+						model.lastPost = data[9].date;
+					} else {
+						model.lastPost = 'end';
+					}
+					console.log(model.lastPost);
 					model.posts = model.posts.concat(data);
 				})
 				.error(() => {

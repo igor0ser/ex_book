@@ -31,18 +31,6 @@ mongoose.model('users', usersSchema);
 
 mongoose.model('posts', postsSchema);
 
-/*
-mongoose.model('users').find(function(err, users) {
-	console.log('users from database:');
-	console.log(users);
-});
-mongoose.model('posts').find(function(err, posts) {
-	console.log('posts from database:');
-	console.log(posts);
-	console.log(posts[0].comments[0]);
-});
-*/
-
 var db = {
 	User: mongoose.model('users'),
 	Post: mongoose.model('posts')
