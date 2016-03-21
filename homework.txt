@@ -1,9 +1,6 @@
 Level 2:
 As unauthorized user I can login with github account (create new user or use existing)
 
-Level 3:
-As user I can see only last 10 posts
-As user I can load more 10 posts
 
 ==== ALL ====
 Variant a

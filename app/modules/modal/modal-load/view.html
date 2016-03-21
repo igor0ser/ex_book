@@ -2,7 +2,7 @@
 	<div class="form-group text-center">
 		<label for="exampleInputFile">File input</label>
 		<input type="file" id="exampleInputFile" required class="file-input" name="avatar">
-	<input name="username" type="text" value="john">
+	<input name="username" type="text" ng-model="$ctrl.userName" hidden>
 	</div>
 	<button type="submit" class="btn btn-warning">Submit</button>
 </form>
