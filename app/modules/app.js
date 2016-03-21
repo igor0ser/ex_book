@@ -5,7 +5,8 @@
 		posts: [],
 		isLogined: true,
 		userName: 'john',
-		filter: ''
+		filter: '',
+		lastPost: ''
 	});
 
 	app.run((serverConnection) => {

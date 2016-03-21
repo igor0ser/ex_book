@@ -246,3 +246,10 @@ p.comment-text {
 	margin-left: 185px;
 	color: #fff;
 }
+
+.load-posts{
+	display: block;
+	margin: auto;
+	width: 50%;
+	font-weight: bold;
+}

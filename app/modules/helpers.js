@@ -3,12 +3,19 @@
 
 	var app = angular.module('app');
 
-	app.service('serverConnection', function($http, model){
+	app.service('serverConnection', function($http, model, $rootScope){
 		this.getData = () => {
+			console.log("get data");
+			console.log("model.lastPost = ", model.lastPost);
+
 			$http
-				.get('/post')
+				.post('/getposts', {
+					lastPost: model.lastPost
+				})
 				.success((data) => {
-					model.posts = data;
+					model.lastPost = data[9].date;
+					console.log(model.lastDate);
+					model.posts = model.posts.concat(data);
 				})
 				.error(() => {
 					console.log('error');

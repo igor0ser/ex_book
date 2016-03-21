@@ -5,17 +5,19 @@ var ObjectId = mongoose.Types.ObjectId;
 var db = require('./db');
 var passport = require('passport');
 
-var multer	= require('multer');
-var upload = multer({ dest: 'uploads/' });
-
-
-var multipart = require('connect-multiparty');
-var multipartMiddleware = multipart();
-
 function route(app){
 
-	app.get('/post', (req, res) => {
-		db.Post.find((err, posts) => res.send(posts));
+	app.post('/getposts', (req, res) => {
+		console.log("req.body.lastPost = ", req.body.lastPost);
+		var lastPost = (req.body.lastPost) ? req.body.lastPost : ("" + new Date().getTime());
+		console.log("lastPost = " + lastPost);
+		db.Post.find(
+			{date: {$lte: lastPost}},
+			'date postAuthor postText',
+			{sort: {date: -1}, limit: 10},
+			(err, posts) => {
+				res.send(posts);
+			});
 	});
 
 	app.post('/post', (req, res) => {
@@ -100,16 +102,6 @@ function route(app){
 			);
 	});
 
-/*	app.post('/load', upload.single('avatar'), function (req, res, next) {
-		// req.file is the `avatar` file
-		// req.body will hold the text fields, if there were any
-		console.log('Here is load route!');
-		console.log(req.file);
-		console.log(req.username);
-		res.redirect('/');
-	});
-*/
-
 
 	app.post('/load', (req, res) => {
 		var form = new multiparty.Form();
@@ -125,23 +117,6 @@ function route(app){
 			res.redirect('/');
 		});
 	});
-
-
-/*	app.post('/load', multipartMiddleware, function(req, resp) {
-		console.log(req.body, req.files);
-		var file = req.files[0];
-		var newPath = 'img/users/' + req.body.username + '.jpg';
-		console.log(newPath);
-
-	});*/
-
-/*	app.post('/load', upload.array('photos', 12), function (req, res, next) {
-		console.log(req.files);
-		// req.files is array of `photos` files
-		// req.body will contain the text fields, if there were any
-		res.redirect('/');
-	})*/
-
 }
 
 module.exports = route;
