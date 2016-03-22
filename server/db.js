@@ -15,7 +15,10 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 conn.once('open', () => console.log('Connection with mlab is succesful') );
 
 var usersSchema = new Schema({
-	login: String,
+	login: {
+		type: String,
+		unique: true
+	},
 	password: String
 });
 

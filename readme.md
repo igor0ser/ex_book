@@ -17,9 +17,7 @@ Available credentials for app:
 
 Login / Password:
 user / user,
-korben / korben,
-igor / igor,
-racoon / racoon,
-joker / joker
+john / john,
+igor / igor
 
 
