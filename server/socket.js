@@ -10,7 +10,6 @@ function socket(server){
 		socket.on('post', (data, cb) => {
 			var post = new db.Post(data);
 			post.save((err, post) => {
-				console.log(post);
 				socket.broadcast.emit('post', post);
 				cb(post.id);
 			});
@@ -32,10 +31,6 @@ function socket(server){
 
 		socket.on('remove comment', (comment, cb) => {
 			var id = new ObjectId(comment.postId);
-			console.log('remove comment');
-			console.log(id);
-			console.log(comment);
-
 
 			db.Post.findByIdAndUpdate(
 				id,

@@ -1,8 +1,3 @@
-Level 2:
-As unauthorized user I can login with github account (create new user or use existing)
-
-
-==== ALL ====
 Variant a
 Create posts wall
 Level 1:

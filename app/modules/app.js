@@ -35,9 +35,13 @@
 					url: '/signup',
 					template: '<modal-signup />'
 				})
-				.state('modal.message', {
-					template: '<modal-message />',
-					params: {mes: null}
+				.state('modal.error', {
+					url: '/error',
+					template: '<modal-error />'
+				})
+				.state('modal.wrong', {
+					url: '/wrong',
+					template: '<modal-wrong />'
 				})
 				.state('modal.load', {
 					url: '/load',

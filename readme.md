@@ -2,11 +2,11 @@ To run SPA:
 
 1. install npm dependencies:
 
-	> npm install
+	> npm i
 
 2. install bower dependencies:
 
-	> bower install
+	> bower i
 
 3. To start a project use default gulp task
 
