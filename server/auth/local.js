@@ -1,8 +1,8 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var db = require('./db');
+var db = require('./../db');
 
-function authorizationLocal(app){
+function authLocal(app){
 	var localStrategy = new LocalStrategy(
 		{ usernameField: 'login',
 		passwordField: 'password'},
@@ -23,18 +23,15 @@ function authorizationLocal(app){
 
 	passport.use(localStrategy);
 
-	passport.serializeUser(function(user, done) {
+/*	passport.serializeUser(function(user, done) {
 		done(null, user.id);
 	});
 
 	passport.deserializeUser(function(id, done) {
-		User.findById(id, function (err, user) {
+		db.User.findById(id, function (err, user) {
 			done(err, user);
 		});
-	});
-
-	app.use(passport.initialize());
-	app.use(passport.session());
+	});*/
 }
 
-module.exports = authorizationLocal;
+module.exports = authLocal;

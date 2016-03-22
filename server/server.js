@@ -1,14 +1,14 @@
 var express = require('express');
 var middleware = require('./middleware');
-var authorizationLocal = require('./authorization-local');
-var authorizationGithub = require('./authorization-github');
+var authLocal = require('./auth/local');
+var authGithub = require('./auth/github');
 var route = require('./route');
 var socket = require('./socket');
 
 var app = express();
 middleware(app);
-authorizationLocal(app);
-authorizationGithub(app);
+authLocal(app);
+authGithub(app);
 route(app);
 
 var server = app.listen(8080, () => { 

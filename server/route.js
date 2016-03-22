@@ -8,6 +8,8 @@ var passport = require('passport');
 function route(app){
 
 	app.post('/getposts', (req, res) => {
+		console.log('user');
+		console.log(req.user);
 		console.log("req.body.lastPost = ", req.body.lastPost);
 		var lastPost = (req.body.lastPost) ? req.body.lastPost : ("" + new Date().getTime());
 		console.log("lastPost = " + lastPost);
@@ -18,19 +20,6 @@ function route(app){
 			(err, posts) => {
 				res.send(posts);
 			});
-	});
-
-	app.post('/post', (req, res) => {
-		var post = new db.Post({
-			date: req.body.date,
-			postAuthor: req.body.postAuthor,
-			postText: req.body.postText,
-			comments: []
-		});
-		post.save((err) => {
-			if (err) console.log('error = ', err);
-			res.end();
-		});
 	});
 
 	app.post('/login', function(req, res, next) {
@@ -82,27 +71,6 @@ function route(app){
 		});
 	});
 
-	app.post('/comment', (req, res) => {
-		var id = new ObjectId(req.body.id);
-		console.log(id);
-
-		var comment = {
-			commentAuthor: req.body.commentAuthor,
-			commentText: req.body.commentText,
-			date: req.body.date
-		};
-		db.Post.findByIdAndUpdate(
-			id,
-			{$push: {'comments': comment}},
-			{safe: true, upsert: true},
-			(err, model) => {
-				if (err) console.log(err);
-				res.end();
-			}
-			);
-	});
-
-
 	app.post('/load', (req, res) => {
 		var form = new multiparty.Form();
 		form.parse(req, function(err, fields, files) {
@@ -117,6 +85,34 @@ function route(app){
 			res.redirect('/');
 		});
 	});
+
+	app.get('/git', passport.authenticate('github'));
+	app.get('/git/error', function(req, res){
+			req.send(401);
+		});
+
+	app.get('/git/cb',
+		passport.authenticate('github', {failureRedirect: '/auth/error'}),
+		function(req, res){
+			console.log('was logined');
+			console.log(req.user);
+			res.redirect('/#/');
+		}
+	);
+
+	app.get('/logout', function (req, res){
+		console.log('logout');
+		req.session.destroy();
+		req.logout();
+		res.redirect('/#/login');
+	});
+
+	app.get('/getuser', function(req, res){
+		res.send(req.user);
+		res.end();
+	});
 }
+
+
 
 module.exports = route;

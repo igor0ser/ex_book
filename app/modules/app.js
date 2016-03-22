@@ -3,14 +3,15 @@
 
 	app.value('model', {
 		posts: [],
-		isLogined: true,
-		userName: 'john',
+		isLogined: false,
+		userName: '',
 		filter: '',
 		lastPost: ''
 	});
 
 	app.run((serverConnection) => {
 		serverConnection.getData();
+		serverConnection.getUser();
 	});
 
 	app.config(($stateProvider, $urlRouterProvider) => {

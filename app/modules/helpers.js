@@ -32,6 +32,18 @@
 				if (cb) cb();
 			});
 		};
+
+		this.getUser = () => {
+			console.log('/getUser');
+			$http.get('/getUser').then((data) => {
+				console.log(data);
+				if (data.data.profile){
+					model.isLogined = true;
+					model.userName = data.data.profile.emails[0].value;
+				}
+				
+			});
+		};
 	});
 
 
