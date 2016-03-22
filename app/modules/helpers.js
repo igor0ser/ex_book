@@ -5,9 +5,6 @@
 
 	app.service('serverConnection', function($http, model, $rootScope){
 		this.getData = () => {
-			console.log("get data");
-			console.log("model.lastPost = ", model.lastPost);
-
 			$http
 				.post('/getposts', {
 					lastPost: model.lastPost
@@ -26,23 +23,17 @@
 				});
 		};
 
-		this.sendData = (url, data, cb) => {
-			$http.post(url, data).then(() => {
-				this.getData();
-				if (cb) cb();
-			});
-		};
-
 		this.getUser = () => {
-			console.log('/getUser');
-			$http.get('/getUser').then((data) => {
-				console.log(data);
-				if (data.data.profile){
-					model.isLogined = true;
-					model.userName = data.data.profile.emails[0].value;
-				}
-				
-			});
+			$http.get('/getUser')
+				.then((data) => {
+					if (data.data.profile){
+						model.isLogined = true;
+						model.userName = data.data.profile.emails[0].value;
+					} else if (data.data.login) {
+						model.isLogined = true;
+						model.userName = data.data.login;
+					}
+				});
 		};
 	});
 

@@ -35,8 +35,7 @@ function route(app){
 			}
 			req.logIn(user, function(err) {
 				if (err) { return next(err); }
-				res.sendStatus(200);
-				return res.end();
+				res.redirect('/#/');
 			});
 		})(req, res, next); 
 	});
@@ -54,18 +53,15 @@ function route(app){
 
 			passport.authenticate('local', function(err, user, info){
 				if (err) { 
-					console.log('err');
-					return next(err); 
+					return next(err);
 				}
 				if (!user) {
-					console.log('Error on creation user');
 					res.send("Some error on user's creation");
 					return res.end();
 				}
 				req.logIn(user, function(err) {
 					if (err) { return next(err); }
-					res.sendStatus(200);
-					return res.end();
+					res.redirect('/#/');
 				});
 			})(req, res, next); 
 		});

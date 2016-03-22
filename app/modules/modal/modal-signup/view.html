@@ -1,21 +1,21 @@
 <div>
-	<form class="form-horizontal" ng-submit="$ctrl.submit()">
+	<form class="form-horizontal" method="POST" action="/signup">
 		<div class="form-group">
 			<label for="input-login" class="col-sm-2 control-label">Login</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="input-login" placeholder="Login" required ng-model="$ctrl.login">
+				<input type="text" class="form-control" id="input-login" placeholder="Login" required ng-model="$ctrl.login" name="login">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="input-password" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" id="input-password" placeholder="Password" required ng-model='$ctrl.password'>
+				<input type="password" class="form-control" id="input-password" placeholder="Password" required ng-model='$ctrl.password' name="password">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="input-password2" class="col-sm-2 control-label">Repeat password</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" id="input-password2" placeholder="Repeat password" required ng-model='$ctrl.passwordRepeat'>
+				<input type="password" class="form-control" id="input-password2" placeholder="Repeat password" required ng-model='$ctrl.passwordRepeat' name="reppass">
 			</div>
 		</div>
 

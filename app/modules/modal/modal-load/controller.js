@@ -6,7 +6,6 @@
 	app.controller('ModalLoadController', function(model){
 		var $ctrl = this;
 		$ctrl.userName = model.userName;
-		console.log($ctrl);
 	});
 
 })();
