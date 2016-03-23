@@ -10,6 +10,7 @@
 					lastPost: model.lastPost
 				})
 				.success((data) => {
+					console.log(data);
 					if (data[9]){
 						model.lastPost = data[9].date;
 					} else {

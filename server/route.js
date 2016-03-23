@@ -15,6 +15,7 @@ function route(app){
 			{sort: {date: -1}, limit: 10},
 			(err, posts) => {
 				res.send(posts);
+				res.end();
 			});
 	});
 

@@ -1,6 +1,6 @@
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
-
+var db = require('./../db.js');
 
 function authGithub(app){
 	var githubStrategy = new GithubStrategy({
@@ -18,7 +18,12 @@ function authGithub(app){
 	passport.use(githubStrategy);
 
 	passport.serializeUser(function(user, done) {
-		done(null, user);
+		if (user.login) {
+			var userNew = {login: user.login};
+			done(null, userNew);
+		} else {
+			done(null, user);
+		}
 	});
 
 	passport.deserializeUser(function(user, done) {
