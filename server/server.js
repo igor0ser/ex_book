@@ -3,7 +3,6 @@ var middleware = require('./middleware');
 var authLocal = require('./auth/local');
 var authGithub = require('./auth/github');
 var route = require('./route');
-var socket = require('./socket');
 
 var app = express();
 middleware(app);

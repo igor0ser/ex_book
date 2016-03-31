@@ -257,5 +257,5 @@ p.comment-text {
 	width: 50%;
 	font-weight: bold;
 	margin-bottom: 20px;
-	animation: fadeIn 2s;
+	animation: fadeIn .7s;
 }

@@ -14,7 +14,8 @@
 			var data = {
 				date: new Date().getTime(),
 				postAuthor: model.userName,
-				postText: $ctrl.text
+				postText: $ctrl.text,
+				comments: []
 			};
 
 			$http.post('/addpost', data)

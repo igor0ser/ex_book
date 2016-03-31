@@ -44,7 +44,7 @@ gulp.task('watch', function() {
 });
 
 //open
-gulp.task('open', ['concat'], function(){
+gulp.task('open', ['concat', 'nodemon'], function(){
 	var options = {
 		app: 'chrome',
 		uri: paths.port
@@ -54,7 +54,7 @@ gulp.task('open', ['concat'], function(){
 
 
 // default task 
-gulp.task('default', ['open', 'nodemon', 'watch']);
+gulp.task('default', ['open', 'watch']);
 
 
 

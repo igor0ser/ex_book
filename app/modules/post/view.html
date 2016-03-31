@@ -8,14 +8,14 @@
 	<div class="post-comments">
 		<button 
 			class="btn btn-warning see-comm" 
-			ng-click="$ctrl.limit = $ctrl.limit - 10"
-			ng-show = "$ctrl.limit >= -$ctrl.postObj.comments.length"
-		>
+			ng-click="$ctrl.getComments()"
+			ng-show="$ctrl.butVisib"
+			>
 			See previous comments
 		</button>
 
 		<comment
-			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date' | limitTo: $ctrl.limit"
+			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date'"
 			author = {{comment.commentAuthor}}
 			text = {{comment.commentText}}
 			date = {{comment.date}}

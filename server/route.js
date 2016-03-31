@@ -5,6 +5,7 @@ var ObjectId = mongoose.Types.ObjectId;
 var db = require('./db');
 var passport = require('passport');
 var socketIo = require('socket.io');
+var checkAuth = require('./helpers/checkAuth');
 
 function route(app, server){
 	var io = socketIo(server);
@@ -16,9 +17,23 @@ function route(app, server){
 			'_id date postAuthor postText comments',
 			{sort: {date: -1}, limit: 10},
 			(err, posts) => {
+				posts.forEach(post => {
+					post.comments = post.comments.splice(-3);
+				});
 				res.send(posts);
 				res.end();
 			});
+	});
+
+	app.post('/getcomments', (req, res) => {
+		var id = new ObjectId(req.body.postId);
+		var post = db.Post.findById(id, (err, post) =>{
+			console.log(post);
+			var comments = post.comments
+						.filter(comment => comment.date < req.body.lastCommentDate)
+						.splice(-10);
+			res.send(comments);
+		});
 	});
 
 	app.post('/login', function(req, res, next) {
@@ -98,12 +113,15 @@ function route(app, server){
 		console.log('Socket is connected');
 
 		app.post('/addpost', (req, res) => {
-			var post = new db.Post({
-				date: req.body.date,
-				postAuthor: req.body.postAuthor,
-				postText: req.body.postText,
-				comments: []
-			});
+
+			var postData = req.body;
+
+			if (!checkAuth(req, postData.postAuthor)){
+				res.send(403);
+				res.end();
+			}
+
+			var post = new db.Post(postData);
 			post.save((err) => {
 				if (err) console.log('error = ', err);
 					console.log('post');
@@ -114,11 +132,16 @@ function route(app, server){
 			});
 
 		app.post('/addcomment', (req, res) => {
-			console.log('addcomment');
-
 			var comment = req.body;
+			if (!checkAuth(req, comment.commentAuthor)){
+				res.send(403);
+				res.end();
+			}
+
+			var id = new ObjectId(comment.postId);
+
 			db.Post.findByIdAndUpdate(
-				comment.postId,
+				id,
 				{$push: {'comments': comment}},
 				{safe: true, upsert: true},
 				(err, model) => {
@@ -130,10 +153,12 @@ function route(app, server){
 		});
 
 		app.post('/delcomment', (req, res) => {
-			console.log('delcomment');
 			var comment = req.body;
-			console.log('comment');
-			console.log(comment);
+			if (!checkAuth(req, comment.commentAuthor)){
+				res.send(403);
+				res.end();
+			}
+
 			var id = new ObjectId(comment.postId);
 
 			db.Post.findByIdAndUpdate(

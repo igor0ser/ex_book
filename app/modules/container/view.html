@@ -14,7 +14,9 @@
 	<button 
 		class="btn btn-warning load-posts" 
 		ng-click="$ctrl.loadPosts()"
-		ng-disabled="$ctrl.model.lastPost === 'end'">Load another ten posts</button>
+		ng-disabled="$ctrl.model.lastPost === 'end'"
+		ng-show="$ctrl.model.lastPost !== ''"
+		>Load another ten posts</button>
 
 </div>
 

@@ -1,8 +1,8 @@
 I checked HW and have some comments:
 
  * Do not use console.log for log information.
- * It is better to use REST api to CRUD actions and sockets as events to notify other users.
- * You need to check user rights before create or delete some records.
+ + It is better to use REST api to CRUD actions and sockets as events to notify other users.
+ + You need to check user rights before create or delete some records.
  + You shouldn't hardcode your's application url callbackURL: 'http://localhost:8080/git/cb'
  * Do not cheat with loading comments.
 
