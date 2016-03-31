@@ -6,6 +6,7 @@ var db = require('./db');
 var passport = require('passport');
 var socketIo = require('socket.io');
 var checkAuth = require('./helpers/checkAuth');
+var errorHandler = require('./helpers/errorHandler');
 
 function route(app, server){
 	var io = socketIo(server);
@@ -17,6 +18,7 @@ function route(app, server){
 			'_id date postAuthor postText comments',
 			{sort: {date: -1}, limit: 10},
 			(err, posts) => {
+				errorHandler(err,res);
 				posts.forEach(post => {
 					post.comments = post.comments.splice(-3);
 				});
@@ -28,7 +30,7 @@ function route(app, server){
 	app.post('/getcomments', (req, res) => {
 		var id = new ObjectId(req.body.postId);
 		var post = db.Post.findById(id, (err, post) =>{
-			console.log(post);
+			errorHandler(err,res);
 			var comments = post.comments
 						.filter(comment => comment.date < req.body.lastCommentDate)
 						.splice(-10);
@@ -38,12 +40,8 @@ function route(app, server){
 
 	app.post('/login', function(req, res, next) {
 		passport.authenticate('local', function(err, user, info){
-			if (err) { 
-				console.log('err');
-				return res.redirect('/#/error'); 
-			}
+			errorHandler(err,res);
 			if (!user) {
-				console.log('wrong user');
 				return res.redirect('/#/wrong'); 
 			}
 			req.logIn(user, function(err) {
@@ -59,11 +57,9 @@ function route(app, server){
 			password: req.body.password
 		});
 		user.save((err) => {
-			if (err) console.log('error = ', err);
+			errorHandler(err,res);
 			passport.authenticate('local', function(err, user, info){
-				if (err) { 
-					return next(err);
-				}
+				errorHandler(err,res);
 				if (!user) {
 					return res.redirect('/#/error'); 
 				}
@@ -110,64 +106,44 @@ function route(app, server){
 
 	io.on('connection', function (socket) {
 
-		console.log('Socket is connected');
-
 		app.post('/addpost', (req, res) => {
-
 			var postData = req.body;
-
-			if (!checkAuth(req, postData.postAuthor)){
-				res.send(403);
-				res.end();
-			}
-
+			if (!checkAuth(req, res, postData.postAuthor)) return;
 			var post = new db.Post(postData);
 			post.save((err) => {
-				if (err) console.log('error = ', err);
-					console.log('post');
-					console.log(post);
-					socket.broadcast.emit('post', post);
-				});
+				errorHandler(err, res);
+				socket.broadcast.emit('post', post);
 				res.end();
 			});
+		});
 
 		app.post('/addcomment', (req, res) => {
 			var comment = req.body;
-			if (!checkAuth(req, comment.commentAuthor)){
-				res.send(403);
-				res.end();
-			}
-
+			if (!checkAuth(req, res, comment.commentAuthor)) return;
 			var id = new ObjectId(comment.postId);
-
 			db.Post.findByIdAndUpdate(
 				id,
 				{$push: {'comments': comment}},
 				{safe: true, upsert: true},
 				(err, model) => {
-					if (err) console.log(err);
+					errorHandler(err, res);
 					socket.broadcast.emit('comment', comment);
 					res.end();
-				}
-				);
+			});
 		});
 
 		app.post('/delcomment', (req, res) => {
 			var comment = req.body;
-			if (!checkAuth(req, comment.commentAuthor)){
-				res.send(403);
-				res.end();
-			}
-
+			if (!checkAuth(req, res, comment.commentAuthor)) return;
 			var id = new ObjectId(comment.postId);
-
 			db.Post.findByIdAndUpdate(
 				id,
 				{$pull: {'comments': comment}},
 				(err, model) => {
-					if (err) console.log(err);
+					errorHandler(err, res);
 					socket.broadcast.emit('remove comment', comment);
-				});
+					res.end();
+			});
 		});
 
 	});

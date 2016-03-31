@@ -1,11 +1,11 @@
-function checkAuth(req, author){
+function checkAuth(req, res, author){
 	if (req.user.login) {
-		return req.user.login === author;
+		if (req.user.login === author) return true;
 	} else if (req.user.profile) {
-		return req.user.profile.emails[0].value === author;
-	} else {
-		return false;
-	}
+		if (req.user.profile.emails[0].value === author) return true;
+	} 
+	res.redirect('/#/werong');
+	return false;
 }
 
 module.exports = checkAuth;

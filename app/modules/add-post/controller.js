@@ -9,7 +9,6 @@
 		$ctrl.model = model;
 		$ctrl.text = '';
 
-
 		$ctrl.submit = function() {
 			var data = {
 				date: new Date().getTime(),

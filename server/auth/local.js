@@ -8,7 +8,6 @@ function authLocal(app){
 		passwordField: 'password'},
 		function(username, password, done) {
 			db.User.findOne({ login: username }, function(err, user) {
-				console.log(user);
 				if (err) { return done(err); }
 				if (!user) {
 					return done(null, false, { message: 'Incorrect username.' });

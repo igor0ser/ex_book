@@ -13,7 +13,6 @@
 				commentAuthor: $ctrl.author,
 				date: +$ctrl.date
 			};
-			console.log(comment);
 
 			$http.post('delcomment', comment);
 		};

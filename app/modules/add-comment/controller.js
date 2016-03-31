@@ -15,7 +15,6 @@
 				commentText: $ctrl.text,
 				date: new Date().getTime()
 			};
-			console.log(comment);
 
 			$http.post('/addcomment', comment)
 				.then(() => $ctrl.text = '');

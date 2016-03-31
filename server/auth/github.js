@@ -8,7 +8,6 @@ function authGithub(app){
 		clientSecret: 'f40847e5dffb35c6db3cacc83e3b0ae14eb56a4c',
 		callbackURL: '/git/cb'
 		}, function(accessToken, refreshToken, profile, done){
-			console.log("profile = " + profile);
 			done(null, {
 					accessToken: accessToken,
 					profile: profile

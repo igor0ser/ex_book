@@ -10,17 +10,12 @@
 					lastPost: model.lastPost
 				})
 				.success((data) => {
-					console.log(data);
 					if (data[9]){
 						model.lastPost = data[9].date;
 					} else {
 						model.lastPost = 'end';
 					}
-					console.log(model.lastPost);
 					model.posts = model.posts.concat(data);
-				})
-				.error(() => {
-					console.log('error');
 				});
 		};
 
@@ -36,12 +31,6 @@
 					}
 				});
 		};
-
-/*		this.sendData = (url, data, cb) => {
-			$http.post(url, data).then(() => {
-				if (cb) cb();
-			});
-		};*/
 	});
 
 

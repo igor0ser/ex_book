@@ -15,7 +15,6 @@
 			};
 			$http.post('getComments', dataObj)
 				.then((data) => {
-					console.log(data);
 					$ctrl.butVisib = data.data.length >= 10;
 					$ctrl.postObj.comments = data.data.concat(comments);
 				});
