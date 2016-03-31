@@ -3,25 +3,22 @@
 
 	var app = angular.module('app');
 
-	app.controller('AddPostController', function(model, modelChanger, socket){
+	app.controller('AddPostController', function(model, $http){
 		var $ctrl = this;
 
 		$ctrl.model = model;
 		$ctrl.text = '';
 
+
 		$ctrl.submit = function() {
-			var post = {
-				date: '' + new Date().getTime(),
+			var data = {
+				date: new Date().getTime(),
 				postAuthor: model.userName,
-				postText: $ctrl.text,
-				comments: []
+				postText: $ctrl.text
 			};
 
-			socket.emit('post', post, (data) => {
-				post._id = data;
-				modelChanger.addPost(post);
-				$ctrl.text = '';
-			});
+			$http.post('/addpost', data)
+				.then(() => $ctrl.text = '');
 		};
 
 	});

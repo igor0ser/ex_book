@@ -3,7 +3,7 @@
 
 	var app = angular.module('app');
 
-	app.controller('CommentController', function(model, modelChanger, socket){
+	app.controller('CommentController', function(model, $http){
 		var $ctrl = this;
 		$ctrl.model = model;
 
@@ -13,10 +13,9 @@
 				commentAuthor: $ctrl.author,
 				date: +$ctrl.date
 			};
+			console.log(comment);
 
-			socket.emit('remove comment', comment, () => {
-				modelChanger.removeComment(comment);
-			});
+			$http.post('delcomment', comment);
 		};
 	});
 

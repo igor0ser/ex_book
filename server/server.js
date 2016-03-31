@@ -9,12 +9,13 @@ var app = express();
 middleware(app);
 authLocal(app);
 authGithub(app);
-route(app);
+
 
 var server = app.listen(8080, () => { 
 	console.log('Server is listening on port 8080.');
 });
-socket(server);
+route(app, server);
+/*socket(server);*/
 
 
 

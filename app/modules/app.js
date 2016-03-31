@@ -56,6 +56,7 @@
 			modelChanger.addPost(post);
 		});
 		socket.on('comment', function (comment) {
+			console.log(comment);
 			modelChanger.addComment(comment);
 		});
 		socket.on('remove comment', function (comment) {

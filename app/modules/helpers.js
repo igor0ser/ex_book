@@ -36,6 +36,12 @@
 					}
 				});
 		};
+
+/*		this.sendData = (url, data, cb) => {
+			$http.post(url, data).then(() => {
+				if (cb) cb();
+			});
+		};*/
 	});
 
 
@@ -81,6 +87,7 @@
 			model.posts.push(post);
 		};
 		this.addComment = function(comment){
+			
 			var post = model.posts.filter(post => post._id === comment.postId)[0];
 			post.comments.push(comment);
 		};

@@ -4,8 +4,10 @@ var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 var db = require('./db');
 var passport = require('passport');
+var socketIo = require('socket.io');
 
-function route(app){
+function route(app, server){
+	var io = socketIo(server);
 
 	app.post('/getposts', (req, res) => {
 		var lastPost = (req.body.lastPost) ? req.body.lastPost : ("" + new Date().getTime());
@@ -35,7 +37,6 @@ function route(app){
 			});
 		})(req, res, next); 
 	});
-
 
 	app.post('/signup', function(req, res, next) {
 		var user = new db.User({
@@ -91,6 +92,61 @@ function route(app){
 		res.send(req.user);
 		res.end();
 	});
+
+	io.on('connection', function (socket) {
+
+		console.log('Socket is connected');
+
+		app.post('/addpost', (req, res) => {
+			var post = new db.Post({
+				date: req.body.date,
+				postAuthor: req.body.postAuthor,
+				postText: req.body.postText,
+				comments: []
+			});
+			post.save((err) => {
+				if (err) console.log('error = ', err);
+					console.log('post');
+					console.log(post);
+					socket.broadcast.emit('post', post);
+				});
+				res.end();
+			});
+
+		app.post('/addcomment', (req, res) => {
+			console.log('addcomment');
+
+			var comment = req.body;
+			db.Post.findByIdAndUpdate(
+				comment.postId,
+				{$push: {'comments': comment}},
+				{safe: true, upsert: true},
+				(err, model) => {
+					if (err) console.log(err);
+					socket.broadcast.emit('comment', comment);
+					res.end();
+				}
+				);
+		});
+
+		app.post('/delcomment', (req, res) => {
+			console.log('delcomment');
+			var comment = req.body;
+			console.log('comment');
+			console.log(comment);
+			var id = new ObjectId(comment.postId);
+
+			db.Post.findByIdAndUpdate(
+				id,
+				{$pull: {'comments': comment}},
+				(err, model) => {
+					if (err) console.log(err);
+					socket.broadcast.emit('remove comment', comment);
+				});
+		});
+
+	});
+
 }
 
 
