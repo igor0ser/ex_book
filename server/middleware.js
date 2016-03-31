@@ -20,7 +20,7 @@ function middleware(app){
 	app.use(bodyParser.json());
 
 	app.use(cookieParser());
-	app.use(session({secret: 'mysecret'}));
+	app.use(session({secret: 'mysecret', saveUninitialized: true, resave: true}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 
